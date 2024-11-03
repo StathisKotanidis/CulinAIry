@@ -54,7 +54,7 @@ function DietFilter() {
           </div>
           <div>
             <input type="checkbox" id="primal" name="primal"></input>
-            <label for="paleo">Primal</label>
+            <label for="primal">Primal</label>
           </div>
           <div>
             <input type="checkbox" id="low-fodmap" name="low-fodmap"></input>
