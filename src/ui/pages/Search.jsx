@@ -1,3 +1,4 @@
+import CaloriesFilter from "../CaloriesFilter";
 import CuisineFilter from "../CuisineFilter";
 import DietFilter from "../DietFilter";
 import IntolerancesFilter from "../IntolerancesFilter";
@@ -12,6 +13,7 @@ function Search() {
         <CuisineFilter />
         <IntolerancesFilter />
         <NutrientsFilter />
+        <CaloriesFilter />
       </div>
       <div className="col-span-3 border border-stone-400"></div>
     </div>

@@ -1,0 +1,31 @@
+import { useState } from "react";
+function CaloriesFilter() {
+  const [toggle, setToggle] = useState(true);
+
+  function handleToggle() {
+    toggle === true ? setToggle(false) : setToggle(true);
+  }
+
+  return (
+    <div>
+      <button onClick={handleToggle} className="filters-button">
+        <span>Calories</span>
+        {toggle ? (
+          <box-icon name="chevron-down"></box-icon>
+        ) : (
+          <box-icon name="chevron-up"></box-icon>
+        )}
+      </button>
+      {!toggle && (
+        <div className="flex flex-col">
+          <div classname="flex">
+            <label for="calories">Calories</label>
+            <input type="number" id="calories" name="calories"></input>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default CaloriesFilter;
