@@ -9,7 +9,14 @@ function DietFilter() {
 
   return (
     <div className="flex flex-col">
-      <button onClick={handleToggle}>Diet ⬇ </button>
+      <button onClick={handleToggle} className="filters-button">
+        <span>Diet</span>
+        {toggle ? (
+          <box-icon name="chevron-down"></box-icon>
+        ) : (
+          <box-icon name="chevron-up"></box-icon>
+        )}
+      </button>
       {!toggle && (
         <div className="flex flex-col">
           <div>
@@ -25,20 +32,12 @@ function DietFilter() {
             <label for="vegetarian">Vegetarian</label>
           </div>
           <div>
-            <input
-              type="checkbox"
-              id="lacto-vegetarian"
-              name="lacto-vegetarian"
-            ></input>
-            <label for="lacto-vegetarian">Lacto-Vegetarian</label>
+            <input type="checkbox" id="lacto-veg" name="lacto-veg"></input>
+            <label for="lacto-veg">Lacto-Vegetarian</label>
           </div>
           <div>
-            <input
-              type="checkbox"
-              id="ovo-vegetarian"
-              name="ovo-vegetarian"
-            ></input>
-            <label for="ovo-vegetarian">Ovo-Vegetarian</label>
+            <input type="checkbox" id="ovo-veg" name="ovo-veg"></input>
+            <label for="ovo-veg">Ovo-Vegetarian</label>
           </div>
           <div>
             <input type="checkbox" id="vegan" name="vegan"></input>

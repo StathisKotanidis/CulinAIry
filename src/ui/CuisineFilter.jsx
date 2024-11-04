@@ -9,7 +9,14 @@ function CuisineFilter() {
 
   return (
     <div className="flex flex-col">
-      <button onClick={handleToggle}>Cuisine ⬇ </button>
+      <button onClick={handleToggle} className="filters-button">
+        <span>Cuisine</span>
+        {toggle ? (
+          <box-icon name="chevron-down"></box-icon>
+        ) : (
+          <box-icon name="chevron-up"></box-icon>
+        )}
+      </button>
 
       {!toggle && (
         <div className="flex flex-col">
