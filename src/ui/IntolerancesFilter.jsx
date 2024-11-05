@@ -9,7 +9,7 @@ function IntolerancesFilter() {
   return (
     <div className="flex flex-col">
       <button onClick={handleToggle} className="filters-button">
-        <span>Intolerances</span>
+        <span className="filters-tags">Intolerances</span>
         {toggle ? (
           <box-icon name="chevron-down"></box-icon>
         ) : (

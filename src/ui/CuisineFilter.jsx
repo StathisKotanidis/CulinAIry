@@ -10,7 +10,7 @@ function CuisineFilter() {
   return (
     <div className="flex flex-col">
       <button onClick={handleToggle} className="filters-button">
-        <span>Cuisine</span>
+        <span className="filters-tags">Cuisine</span>
         {toggle ? (
           <box-icon name="chevron-down"></box-icon>
         ) : (

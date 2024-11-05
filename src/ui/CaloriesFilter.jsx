@@ -7,9 +7,9 @@ function CaloriesFilter() {
   }
 
   return (
-    <div>
+    <div className="flex flex-col">
       <button onClick={handleToggle} className="filters-button">
-        <span>Calories</span>
+        <span className="filters-tags">Calories</span>
         {toggle ? (
           <box-icon name="chevron-down"></box-icon>
         ) : (

@@ -9,11 +9,15 @@ function NutrientsFilter() {
   return (
     <div className="flex flex-col">
       <button onClick={handleToggle} className="filters-button">
-        <span>Nutrients</span>
+        <span className="filters-tags">Nutrients</span>
         {toggle ? (
-          <box-icon name="chevron-down"></box-icon>
+          <div>
+            <box-icon name="chevron-down"></box-icon>
+          </div>
         ) : (
-          <box-icon name="chevron-up"></box-icon>
+          <div>
+            <box-icon name="chevron-up"></box-icon>
+          </div>
         )}
       </button>
       {!toggle && (

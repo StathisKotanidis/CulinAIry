@@ -1,21 +1,14 @@
-import CaloriesFilter from "../CaloriesFilter";
-import CuisineFilter from "../CuisineFilter";
-import DietFilter from "../DietFilter";
-import IntolerancesFilter from "../IntolerancesFilter";
-import NutrientsFilter from "../NutrientsFilter";
+import Filters from "../../features/Filters";
 
 function Search() {
   return (
-    <div className="grid grid-cols-4 bg-eggplant">
-      <div className="col-span-4 border border-yellow-300"></div>
-      <div className="col-span-1 border border-orange-600">
-        <DietFilter />
-        <CuisineFilter />
-        <IntolerancesFilter />
-        <NutrientsFilter />
-        <CaloriesFilter />
+    <div className="flex flex-col bg-eggplant">
+      <div className="p-2">
+        <Filters />
       </div>
-      <div className="col-span-3 border border-stone-400"></div>
+      <div className="">
+        <span>All my recipes will be there </span>
+      </div>
     </div>
   );
 }

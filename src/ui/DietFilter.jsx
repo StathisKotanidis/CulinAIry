@@ -10,7 +10,7 @@ function DietFilter() {
   return (
     <div className="flex flex-col">
       <button onClick={handleToggle} className="filters-button">
-        <span>Diet</span>
+        <span className="filters-tags">Diet</span>
         {toggle ? (
           <box-icon name="chevron-down"></box-icon>
         ) : (

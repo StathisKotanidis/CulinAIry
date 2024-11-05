@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .filters-button {
-  @apply flex items-center justify-center;
+  @apply flex items-center justify-between;
+}
+
+.filters-tags {
+  @apply text-xl text-eggWhite;
 }
 
 :root {
