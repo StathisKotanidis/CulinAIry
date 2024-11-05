@@ -14,9 +14,9 @@ function Filters() {
       </span>
       <DietFilter />
       <CuisineFilter />
-      <IntolerancesFilter />
       <NutrientsFilter />
       <CaloriesFilter />
+      <IntolerancesFilter />
     </div>
   );
 }

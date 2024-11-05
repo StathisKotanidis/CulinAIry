@@ -12,11 +12,21 @@ function NutrientsFilter() {
         <span className="filters-tags">Nutrients</span>
         {toggle ? (
           <div>
-            <box-icon name="chevron-down"></box-icon>
+            <box-icon
+              name="chevron-down"
+              type="solid"
+              size="1.8rem"
+              color="#F8E8CC"
+            ></box-icon>
           </div>
         ) : (
           <div>
-            <box-icon name="chevron-up"></box-icon>
+            <box-icon
+              name="chevron-up"
+              type="solid"
+              size="1.8rem"
+              color="#F8E8CC"
+            ></box-icon>
           </div>
         )}
       </button>

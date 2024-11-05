@@ -3,11 +3,19 @@
 @tailwind utilities;
 
 .filters-button {
-  @apply flex items-center justify-between;
+  @apply flex items-center justify-between pb-2;
 }
 
 .filters-tags {
   @apply text-xl text-eggWhite;
+}
+
+.all-checkboxes-container {
+  @apply flex flex-col gap-2;
+}
+
+.checkbox-container {
+  @apply flex gap-2 text-eggWhite;
 }
 
 :root {

@@ -11,9 +11,19 @@ function CaloriesFilter() {
       <button onClick={handleToggle} className="filters-button">
         <span className="filters-tags">Calories</span>
         {toggle ? (
-          <box-icon name="chevron-down"></box-icon>
+          <box-icon
+            name="chevron-down"
+            type="solid"
+            size="1.8rem"
+            color="#F8E8CC"
+          ></box-icon>
         ) : (
-          <box-icon name="chevron-up"></box-icon>
+          <box-icon
+            name="chevron-up"
+            type="solid"
+            size="1.8rem"
+            color="#F8E8CC"
+          ></box-icon>
         )}
       </button>
       {!toggle && (
