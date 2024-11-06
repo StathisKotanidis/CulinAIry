@@ -1,6 +1,7 @@
 import CaloriesFilter from "../ui/CaloriesFilter";
 import CuisineFilter from "../ui/CuisineFilter";
 import DietFilter from "../ui/DietFilter";
+import FiltersButton from "../ui/FiltersButton";
 import Ingredient from "../ui/Ingredient";
 import IntolerancesFilter from "../ui/IntolerancesFilter";
 import NutrientsFilter from "../ui/NutrientsFilter";
@@ -17,6 +18,7 @@ function Filters() {
       <NutrientsFilter />
       <CaloriesFilter />
       <IntolerancesFilter />
+      <FiltersButton />
     </div>
   );
 }

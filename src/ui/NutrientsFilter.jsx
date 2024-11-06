@@ -31,10 +31,13 @@ function NutrientsFilter() {
         )}
       </button>
       {!toggle && (
-        <div className="flex flex-col">
-          <div>
-            <label for="protein">Protein</label>
+        <div className="flex flex-col gap-2">
+          <div className="nutrients-container">
+            <label for="protein" className="nutrients-label">
+              Protein
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="protein"
               name="protein"
@@ -42,9 +45,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="carbs">Carbs</label>
+          <div className="nutrients-container">
+            <label for="carbs" className="nutrients-label">
+              Carbs
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="carbs"
               name="carbs"
@@ -52,9 +58,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="cholesterol">Cholesterol</label>
+          <div className="nutrients-container">
+            <label for="cholesterol" className="nutrients-label">
+              Cholesterol
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="cholesterol"
               name="cholesterol"
@@ -62,13 +71,25 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="fat">Fat</label>
-            <input type="number" id="fat" name="fat" min="1" max="100"></input>
-          </div>
-          <div>
-            <label for="calcium">Calcium</label>
+          <div className="nutrients-container">
+            <label for="fat" className="nutrients-label">
+              Fat
+            </label>
             <input
+              type="number"
+              className="nutrients-input"
+              id="fat"
+              name="fat"
+              min="1"
+              max="100"
+            ></input>
+          </div>
+          <div className="nutrients-container">
+            <label for="calcium" className="nutrients-label">
+              Calcium
+            </label>
+            <input
+              className="nutrients-input"
               type="mumber"
               id="calcium"
               name="calcium"
@@ -76,9 +97,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="fiber">Fiber</label>
+          <div className="nutrients-container">
+            <label for="fiber" className="nutrients-label">
+              Fiber
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="fiber"
               name="fiber"
@@ -86,9 +110,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="iron">Iron</label>
+          <div className="nutrients-container">
+            <label for="iron" className="nutrients-label">
+              Iron
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="iron"
               name="iron"
@@ -96,9 +123,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="zinc">Zinc</label>
+          <div className="nutrients-container">
+            <label for="zinc" className="nutrients-label">
+              Zinc
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="zinc"
               name="zinc"
@@ -106,9 +136,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="sugar">Sugar</label>
+          <div className="nutrients-container">
+            <label for="sugar" className="nutrients-label">
+              Sugar
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="sugar"
               name="sugar"
@@ -116,9 +149,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="sodium">Sodium</label>
+          <div className="nutrients-container">
+            <label for="sodium" className="nutrients-label">
+              Sodium
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="sodium"
               name="sodium"
@@ -126,9 +162,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="potassium">Potassium</label>
+          <div className="nutrients-container">
+            <label for="potassium" className="nutrients-label">
+              Potassium
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="potassium"
               name="potassium"
@@ -136,9 +175,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="phosphorus">Phosphorus</label>
+          <div className="nutrients-container">
+            <label for="phosphorus" className="nutrients-label">
+              Phosphorus
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="phosphorus"
               name="phosphorus"
@@ -146,9 +188,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="magnesium">Magnesium</label>
+          <div className="nutrients-container">
+            <label for="magnesium" className="nutrients-label">
+              Magnesium
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="magnesium"
               name="magnesium"
@@ -156,9 +201,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="vitaminA">Vitamin A</label>
+          <div className="nutrients-container">
+            <label for="vitaminA" className="nutrients-label">
+              Vitamin A
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="vitaminA"
               name="vitaminA"
@@ -166,9 +214,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="vitaminB">Vitamin B</label>
+          <div className="nutrients-container">
+            <label for="vitaminB" className="nutrients-label">
+              Vitamin B
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="vitaminB"
               name="vitaminB"
@@ -176,9 +227,12 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <div>
-            <label for="vitaminC">Vitamin C</label>
+          <div className="nutrients-container">
+            <label for="vitaminC" className="nutrients-label">
+              Vitamin C
+            </label>
             <input
+              className="nutrients-input"
               type="number"
               id="vitaminC"
               name="vitaminC"
@@ -186,7 +240,9 @@ function NutrientsFilter() {
               max="100"
             ></input>
           </div>
-          <span>** the amount of grams per serving **</span>
+          <span className="pt-8 text-center italic text-eggWhite">
+            ** amount of grams per serving **
+          </span>
         </div>
       )}
     </div>

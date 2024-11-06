@@ -18,6 +18,18 @@
   @apply flex gap-2 text-eggWhite;
 }
 
+.nutrients-container {
+  @apply flex justify-between;
+}
+
+.nutrients-input {
+  @apply w-16 bg-eggWhite text-eggplant;
+}
+
+.nutrients-label {
+  @apply text-lg text-eggWhite;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

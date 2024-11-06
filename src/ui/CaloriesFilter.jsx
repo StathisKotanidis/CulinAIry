@@ -28,9 +28,16 @@ function CaloriesFilter() {
       </button>
       {!toggle && (
         <div className="flex flex-col">
-          <div classname="flex">
-            <label for="calories">Calories</label>
-            <input type="number" id="calories" name="calories"></input>
+          <div className="flex justify-between">
+            <label className="text-lg text-eggWhite" for="calories">
+              Max Amount
+            </label>
+            <input
+              className="w-16 bg-eggWhite text-eggplant"
+              type="number"
+              id="calories"
+              name="calories"
+            ></input>
           </div>
         </div>
       )}
