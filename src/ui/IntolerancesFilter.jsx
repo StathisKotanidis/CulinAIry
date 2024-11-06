@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useFilters } from "../context/FiltersProvider";
 
 function IntolerancesFilter() {
-  const [toggle, setToggle] = useState(true);
-
-  function handleToggle() {
-    toggle === true ? setToggle(false) : setToggle(true);
-  }
+  const { toggle, onHandleToggle } = useFilters();
   return (
     <div className="flex flex-col">
-      <button onClick={handleToggle} className="filters-button">
+      <button
+        onCLick={onHandleToggle("intolerances")}
+        className="filters-button"
+      >
         <span className="filters-tags">Intolerances</span>
         {toggle ? (
           <box-icon

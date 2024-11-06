@@ -1,14 +1,10 @@
-import { useState } from "react";
+import { useFilters } from "../context/FiltersProvider";
+
 function CaloriesFilter() {
-  const [toggle, setToggle] = useState(true);
-
-  function handleToggle() {
-    toggle === true ? setToggle(false) : setToggle(true);
-  }
-
+  const { toggle, onHandleToggle } = useFilters();
   return (
     <div className="flex flex-col">
-      <button onClick={handleToggle} className="filters-button">
+      <button onClick={onHandleToggle("calories")} className="filters-button">
         <span className="filters-tags">Calories</span>
         {toggle ? (
           <box-icon
