@@ -1,12 +1,15 @@
 import { useFilters } from "../context/FiltersProvider";
 
 function CaloriesFilter() {
-  const { toggle, onHandleToggle } = useFilters();
+  const { toggles, onHandleToggle } = useFilters();
   return (
     <div className="flex flex-col">
-      <button onClick={onHandleToggle("calories")} className="filters-button">
+      <button
+        onClick={() => onHandleToggle("calories")}
+        className="filters-button"
+      >
         <span className="filters-tags">Calories</span>
-        {toggle ? (
+        {toggles.calories ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -22,7 +25,7 @@ function CaloriesFilter() {
           ></box-icon>
         )}
       </button>
-      {!toggle && (
+      {!toggles.calories && (
         <div className="flex flex-col">
           <div className="flex justify-between">
             <label className="text-lg text-eggWhite" for="calories">

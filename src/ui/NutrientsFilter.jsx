@@ -1,12 +1,15 @@
 import { useFilters } from "../context/FiltersProvider";
 
 function NutrientsFilter() {
-  const { toggle, onHandleToggle } = useFilters();
+  const { toggles, onHandleToggle } = useFilters();
   return (
     <div className="flex flex-col">
-      <button onCLick={onHandleToggle("nutrients")} className="filters-button">
+      <button
+        onClick={() => onHandleToggle("nutrients")}
+        className="filters-button"
+      >
         <span className="filters-tags">Nutrients</span>
-        {toggle ? (
+        {toggles.nutrients ? (
           <div>
             <box-icon
               name="chevron-down"
@@ -26,7 +29,7 @@ function NutrientsFilter() {
           </div>
         )}
       </button>
-      {!toggle && (
+      {!toggles.nutrients && (
         <div className="flex flex-col gap-2">
           <div className="nutrients-container">
             <label for="protein" className="nutrients-label">

@@ -4,18 +4,27 @@ import { useContext, createContext, useReducer } from "react";
 const FiltersContext = createContext();
 
 const initialState = {
-  toggle: false,
+  toggles: {
+    cuisine: false,
+    intolerances: false,
+    diet: false,
+    nutrients: false,
+    calories: false,
+  },
   currentFilter: "",
 };
 
 function reducer(state, action) {
   switch (action.type) {
     case "TOGGLE_FILTER":
-      if (action.payload !== state.currentFilter || state.toggle) {
-        return { ...state, toggle: true, currentFilter: action.payload };
-      } else if (!state.toggle || action.payload === state.currentFilter) {
-        return { ...state, toggle: false, currentFilter: "" };
-      }
+      const filterName = action.payload;
+      return {
+        ...state,
+        toggles: {
+          ...state.toggles,
+          [filterName]: !state.toggles[filterName],
+        },
+      };
 
     default:
       return state;
@@ -23,10 +32,7 @@ function reducer(state, action) {
 }
 
 function FiltersProvider({ children }) {
-  const [{ toggle, currentFilter }, dispatch] = useReducer(
-    reducer,
-    initialState,
-  );
+  const [{ toggles }, dispatch] = useReducer(reducer, initialState);
 
   // a function that handles the toggle functionality of each filter
   function handleToggle(filterName) {
@@ -37,7 +43,7 @@ function FiltersProvider({ children }) {
   return (
     <FiltersContext.Provider
       value={{
-        toggle,
+        toggles,
         onHandleToggle: handleToggle,
       }}
     >

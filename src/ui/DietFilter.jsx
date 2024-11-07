@@ -1,12 +1,12 @@
 import { useFilters } from "../context/FiltersProvider";
 
 function DietFilter() {
-  const { toggle, onHandleToggle } = useFilters();
+  const { toggles, onHandleToggle } = useFilters();
   return (
     <div className="flex flex-col">
-      <button onClick={onHandleToggle("diet")} className="filters-button">
+      <button onClick={() => onHandleToggle("diet")} className="filters-button">
         <span className="filters-tags">Diet</span>
-        {toggle ? (
+        {toggles.diet ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -22,7 +22,7 @@ function DietFilter() {
           ></box-icon>
         )}
       </button>
-      {!toggle && (
+      {!toggles.diet && (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="gluten-free" name="gluten-free"></input>
@@ -75,8 +75,3 @@ function DietFilter() {
 }
 
 export default DietFilter;
-
-/* 1.Need to use Redux/Context API to have a single handleToggle
- function for all my filters to reduce repeated code */
-
-/* 2.Need to create a common class for alll these checkboxes */

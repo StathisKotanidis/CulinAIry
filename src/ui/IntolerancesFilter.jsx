@@ -1,15 +1,15 @@
 import { useFilters } from "../context/FiltersProvider";
 
 function IntolerancesFilter() {
-  const { toggle, onHandleToggle } = useFilters();
+  const { toggles, onHandleToggle } = useFilters();
   return (
     <div className="flex flex-col">
       <button
-        onCLick={onHandleToggle("intolerances")}
+        onClick={() => onHandleToggle("intolerances")}
         className="filters-button"
       >
         <span className="filters-tags">Intolerances</span>
-        {toggle ? (
+        {toggles.intolerances ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -25,7 +25,7 @@ function IntolerancesFilter() {
           ></box-icon>
         )}
       </button>
-      {!toggle && (
+      {!toggles.intolerances && (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="dairy" name="dairy"></input>

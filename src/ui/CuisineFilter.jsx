@@ -1,13 +1,16 @@
 import { useFilters } from "../context/FiltersProvider";
 
 function CuisineFilter() {
-  const { toggle, onHandleToggle } = useFilters();
+  const { toggles, onHandleToggle } = useFilters();
 
   return (
     <div className="flex flex-col">
-      <button onClick={onHandleToggle("cuisine")} className="filters-button">
+      <button
+        onClick={() => onHandleToggle("cuisine")}
+        className="filters-button"
+      >
         <span className="filters-tags">Cuisine</span>
-        {toggle ? (
+        {toggles.cuisine ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -24,7 +27,7 @@ function CuisineFilter() {
         )}
       </button>
 
-      {!toggle && (
+      {!toggles.cuisine && (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="african" name="african"></input>
