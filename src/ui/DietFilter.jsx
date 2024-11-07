@@ -2,11 +2,12 @@ import { useFilters } from "../context/FiltersProvider";
 
 function DietFilter() {
   const { toggles, onHandleToggle } = useFilters();
+  console.log(`Current toggles.diet value is: ${toggles.diet}`);
   return (
     <div className="flex flex-col">
       <button onClick={() => onHandleToggle("diet")} className="filters-button">
         <span className="filters-tags">Diet</span>
-        {toggles.diet ? (
+        {!toggles.diet ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -22,7 +23,7 @@ function DietFilter() {
           ></box-icon>
         )}
       </button>
-      {!toggles.diet && (
+      {toggles.diet ? (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="gluten-free" name="gluten-free"></input>
@@ -69,7 +70,7 @@ function DietFilter() {
             <label htmlFor="whole-30">Whole30</label>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

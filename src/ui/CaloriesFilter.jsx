@@ -9,7 +9,7 @@ function CaloriesFilter() {
         className="filters-button"
       >
         <span className="filters-tags">Calories</span>
-        {toggles.calories ? (
+        {!toggles.calories ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -25,7 +25,7 @@ function CaloriesFilter() {
           ></box-icon>
         )}
       </button>
-      {!toggles.calories && (
+      {toggles.calories && (
         <div className="flex flex-col">
           <div className="flex justify-between">
             <label className="text-lg text-eggWhite" htmlFor="calories">

@@ -1,4 +1,4 @@
-import { FiltersProvider, useFilters } from "../context/FiltersProvider";
+import { useFilters } from "../context/FiltersProvider";
 import CaloriesFilter from "../ui/CaloriesFilter";
 import CuisineFilter from "../ui/CuisineFilter";
 import DietFilter from "../ui/DietFilter";
@@ -9,13 +9,13 @@ import IntolerancesFilter from "../ui/IntolerancesFilter";
 import NutrientsFilter from "../ui/NutrientsFilter";
 
 function Filters() {
-  const { showFilters } = useFilters();
-  console.log(`Current showFilters value is : ${showFilters}`);
+  const { toggles } = useFilters();
+  console.log(`Current toggles.filters value is : ${toggles.filters}`);
   return (
     <div className="flex flex-col gap-2">
       <Ingredient />
       <FiltersToggler />
-      {!showFilters && (
+      {toggles.filters ? (
         <>
           <DietFilter />
           <CuisineFilter />
@@ -23,7 +23,7 @@ function Filters() {
           <CaloriesFilter />
           <IntolerancesFilter />
         </>
-      )}
+      ) : null}
       <FiltersButton />
     </div>
   );

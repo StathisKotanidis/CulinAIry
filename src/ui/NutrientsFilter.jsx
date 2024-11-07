@@ -9,7 +9,7 @@ function NutrientsFilter() {
         className="filters-button"
       >
         <span className="filters-tags">Nutrients</span>
-        {toggles.nutrients ? (
+        {!toggles.nutrients ? (
           <div>
             <box-icon
               name="chevron-down"
@@ -29,7 +29,7 @@ function NutrientsFilter() {
           </div>
         )}
       </button>
-      {!toggles.nutrients && (
+      {toggles.nutrients && (
         <div className="flex flex-col gap-4">
           <div className="nutrients-container">
             <label htmlFor="protein" className="nutrients-label">

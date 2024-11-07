@@ -9,7 +9,7 @@ function IntolerancesFilter() {
         className="filters-button"
       >
         <span className="filters-tags">Intolerances</span>
-        {toggles.intolerances ? (
+        {!toggles.intolerances ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -25,7 +25,7 @@ function IntolerancesFilter() {
           ></box-icon>
         )}
       </button>
-      {!toggles.intolerances && (
+      {toggles.intolerances && (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="dairy" name="dairy"></input>

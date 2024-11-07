@@ -10,7 +10,7 @@ function CuisineFilter() {
         className="filters-button"
       >
         <span className="filters-tags">Cuisine</span>
-        {toggles.cuisine ? (
+        {!toggles.cuisine ? (
           <box-icon
             name="chevron-down"
             type="solid"
@@ -27,7 +27,7 @@ function CuisineFilter() {
         )}
       </button>
 
-      {!toggles.cuisine && (
+      {toggles.cuisine && (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="african" name="african"></input>
