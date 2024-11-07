@@ -30,9 +30,9 @@ function NutrientsFilter() {
         )}
       </button>
       {!toggles.nutrients && (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <div className="nutrients-container">
-            <label for="protein" className="nutrients-label">
+            <label htmlFor="protein" className="nutrients-label">
               Protein
             </label>
             <input
@@ -45,7 +45,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="carbs" className="nutrients-label">
+            <label htmlFor="carbs" className="nutrients-label">
               Carbs
             </label>
             <input
@@ -58,7 +58,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="cholesterol" className="nutrients-label">
+            <label htmlFor="cholesterol" className="nutrients-label">
               Cholesterol
             </label>
             <input
@@ -71,7 +71,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="fat" className="nutrients-label">
+            <label htmlFor="fat" className="nutrients-label">
               Fat
             </label>
             <input
@@ -84,7 +84,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="calcium" className="nutrients-label">
+            <label htmlFor="calcium" className="nutrients-label">
               Calcium
             </label>
             <input
@@ -97,7 +97,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="fiber" className="nutrients-label">
+            <label htmlFor="fiber" className="nutrients-label">
               Fiber
             </label>
             <input
@@ -110,7 +110,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="iron" className="nutrients-label">
+            <label htmlFor="iron" className="nutrients-label">
               Iron
             </label>
             <input
@@ -123,7 +123,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="zinc" className="nutrients-label">
+            <label htmlFor="zinc" className="nutrients-label">
               Zinc
             </label>
             <input
@@ -136,7 +136,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="sugar" className="nutrients-label">
+            <label htmlFor="sugar" className="nutrients-label">
               Sugar
             </label>
             <input
@@ -149,7 +149,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="sodium" className="nutrients-label">
+            <label htmlFor="sodium" className="nutrients-label">
               Sodium
             </label>
             <input
@@ -162,7 +162,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="potassium" className="nutrients-label">
+            <label htmlFor="potassium" className="nutrients-label">
               Potassium
             </label>
             <input
@@ -175,7 +175,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="phosphorus" className="nutrients-label">
+            <label htmlFor="phosphorus" className="nutrients-label">
               Phosphorus
             </label>
             <input
@@ -188,7 +188,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="magnesium" className="nutrients-label">
+            <label htmlFor="magnesium" className="nutrients-label">
               Magnesium
             </label>
             <input
@@ -201,7 +201,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="vitaminA" className="nutrients-label">
+            <label htmlFor="vitaminA" className="nutrients-label">
               Vitamin A
             </label>
             <input
@@ -214,7 +214,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="vitaminB" className="nutrients-label">
+            <label htmlFor="vitaminB" className="nutrients-label">
               Vitamin B
             </label>
             <input
@@ -227,7 +227,7 @@ function NutrientsFilter() {
             ></input>
           </div>
           <div className="nutrients-container">
-            <label for="vitaminC" className="nutrients-label">
+            <label htmlFor="vitaminC" className="nutrients-label">
               Vitamin C
             </label>
             <input

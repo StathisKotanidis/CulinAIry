@@ -26,47 +26,47 @@ function DietFilter() {
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="gluten-free" name="gluten-free"></input>
-            <label for="gluten-free">Gluten Free</label>
+            <label htmlFor="gluten-free">Gluten Free</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="ketogenic" name="ketogenic"></input>
-            <label for="ketogenic">Ketogenic</label>
+            <label htmlFor="ketogenic">Ketogenic</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="vegetarian" name="vegetarian"></input>
-            <label for="vegetarian">Vegetarian</label>
+            <label htmlFor="vegetarian">Vegetarian</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="lacto-veg" name="lacto-veg"></input>
-            <label for="lacto-veg">Lacto-Vegetarian</label>
+            <label htmlFor="lacto-veg">Lacto-Vegetarian</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="ovo-veg" name="ovo-veg"></input>
-            <label for="ovo-veg">Ovo-Vegetarian</label>
+            <label htmlFor="ovo-veg">Ovo-Vegetarian</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="vegan" name="vegan"></input>
-            <label for="vegan">Vegan</label>
+            <label htmlFor="vegan">Vegan</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="pescetarian" name="pescetarian"></input>
-            <label for="pescetarian">Pescetarian</label>
+            <label htmlFor="pescetarian">Pescetarian</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="paleo" name="paleo"></input>
-            <label for="paleo">Paleo</label>
+            <label htmlFor="paleo">Paleo</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="primal" name="primal"></input>
-            <label for="primal">Primal</label>
+            <label htmlFor="primal">Primal</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="low-fodmap" name="low-fodmap"></input>
-            <label for="low-fodmap">Low FODMAP</label>
+            <label htmlFor="low-fodmap">Low FODMAP</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="whole-30" name="whole-30"></input>
-            <label for="whole-30">Whole30</label>
+            <label htmlFor="whole-30">Whole30</label>
           </div>
         </div>
       )}

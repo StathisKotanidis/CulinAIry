@@ -28,7 +28,7 @@ function CaloriesFilter() {
       {!toggles.calories && (
         <div className="flex flex-col">
           <div className="flex justify-between">
-            <label className="text-lg text-eggWhite" for="calories">
+            <label className="text-lg text-eggWhite" htmlFor="calories">
               Max Amount
             </label>
             <input

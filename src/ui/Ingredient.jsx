@@ -8,7 +8,7 @@ function Ingredient() {
         name="ingredient"
         id="ingredient"
       ></input>
-      <label for="ingredient" className="hidden"></label>
+      <label htmlFor="ingredient" className="hidden"></label>
     </div>
   );
 }

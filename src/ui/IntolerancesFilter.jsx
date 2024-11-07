@@ -29,55 +29,55 @@ function IntolerancesFilter() {
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
             <input type="checkbox" id="dairy" name="dairy"></input>
-            <label for="dairy">Dairy</label>
+            <label htmlFor="dairy">Dairy</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="egg" name="egg"></input>
-            <label for="egg">Egg</label>
+            <label htmlFor="egg">Egg</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="gluten" name="gluten"></input>
-            <label for="gluten">Gluten</label>
+            <label htmlFor="gluten">Gluten</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="grain" name="grain"></input>
-            <label for="grain">Grain</label>
+            <label htmlFor="grain">Grain</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="peanut" name="peanut"></input>
-            <label for="peanut">Peanut</label>
+            <label htmlFor="peanut">Peanut</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="seafood" name="seafood"></input>
-            <label for="seafood">Seafood</label>
+            <label htmlFor="seafood">Seafood</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="sesame" name="sesame"></input>
-            <label for="sesame">Sesame</label>
+            <label htmlFor="sesame">Sesame</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="paleo" name="paleo"></input>
-            <label for="paleo">Paleo</label>
+            <label htmlFor="paleo">Paleo</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="shellfish" name="shellfish"></input>
-            <label for="shellfish">Shellfish</label>
+            <label htmlFor="shellfish">Shellfish</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="soy" name="soy"></input>
-            <label for="soy">Soy</label>
+            <label htmlFor="soy">Soy</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="sulfite" name="sulfite"></input>
-            <label for="sulfite">Sulfite</label>
+            <label htmlFor="sulfite">Sulfite</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="tree-nut" name="tree-nut"></input>
-            <label for="tree-nut">Tree Nut</label>
+            <label htmlFor="tree-nut">Tree Nut</label>
           </div>
           <div className="checkbox-container">
             <input type="checkbox" id="wheat" name="wheat"></input>
-            <label for="wheat">Wheat</label>
+            <label htmlFor="wheat">Wheat</label>
           </div>
         </div>
       )}
