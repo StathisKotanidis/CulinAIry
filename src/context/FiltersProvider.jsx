@@ -61,8 +61,3 @@ function useFilters() {
 
 export { FiltersProvider, useFilters };
 
-//a function that handles the toggle functionality of filters
-//  function handleFiltersToggle() {
-//   dispatch({ type: "TOGGLE_FILTERS", payload: !showFilters });
-//   console.log(`Showfilters after click is : ${showFilters}`);
-// }

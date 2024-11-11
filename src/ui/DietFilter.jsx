@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { useFilters } from "../context/FiltersProvider";
 
 function DietFilter() {
   const { toggles, onHandleToggle } = useFilters();
-  console.log(`Current toggles.diet value is: ${toggles.diet}`);
+  const [checkboxInput, setCheckboxInput] = useState("");
+
+  function handleCheckboxes(e) {
+    setCheckboxInput(checkboxInput === "" ? e.target.value : "");
+  }
+
   return (
     <div className="flex flex-col">
       <button onClick={() => onHandleToggle("diet")} className="filters-button">
@@ -26,47 +32,124 @@ function DietFilter() {
       {toggles.diet ? (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
-            <input type="checkbox" id="gluten-free" name="gluten-free"></input>
+            <input
+              type="checkbox"
+              value="Gluten Free"
+              id="gluten-free"
+              name="gluten-free"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Gluten Free"}
+            ></input>
             <label htmlFor="gluten-free">Gluten Free</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="ketogenic" name="ketogenic"></input>
+            <input
+              type="checkbox"
+              value="Ketogenic"
+              id="ketogenic"
+              name="ketogenic"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Ketogenic"}
+            ></input>
             <label htmlFor="ketogenic">Ketogenic</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="vegetarian" name="vegetarian"></input>
+            <input
+              type="checkbox"
+              value="Vegetarian"
+              id="vegetarian"
+              name="vegetarian"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Vegetarian"}
+            ></input>
             <label htmlFor="vegetarian">Vegetarian</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="lacto-veg" name="lacto-veg"></input>
-            <label htmlFor="lacto-veg">Lacto-Vegetarian</label>
+            <input
+              type="checkbox"
+              value="Lacto-Vegetarian"
+              id="lacto-vegetarian"
+              name="lacto-vegetarian"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Lacto-Vegetarian"}
+            ></input>
+            <label htmlFor="lacto-vegetarian">Lacto-Vegetarian</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="ovo-veg" name="ovo-veg"></input>
-            <label htmlFor="ovo-veg">Ovo-Vegetarian</label>
+            <input
+              type="checkbox"
+              value="Ovo-Vegetarian"
+              id="ovo-vegetarian"
+              name="ovo-vegetarian"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Ovo-Vegetarian"}
+            ></input>
+            <label htmlFor="ovo-vegetarian">Ovo-Vegetarian</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="vegan" name="vegan"></input>
+            <input
+              type="checkbox"
+              value="Vegan"
+              id="vegan"
+              name="vegan"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Vegan"}
+            ></input>
             <label htmlFor="vegan">Vegan</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="pescetarian" name="pescetarian"></input>
+            <input
+              type="checkbox"
+              value="Pescetarian"
+              id="pescetarian"
+              name="pescetarian"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Pescetarian"}
+            ></input>
             <label htmlFor="pescetarian">Pescetarian</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="paleo" name="paleo"></input>
+            <input
+              type="checkbox"
+              value="Paleo"
+              id="paleo"
+              name="paleo"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Paleo"}
+            ></input>
             <label htmlFor="paleo">Paleo</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="primal" name="primal"></input>
+            <input
+              type="checkbox"
+              value="Primal"
+              id="primal"
+              name="primal"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Primal"}
+            ></input>
             <label htmlFor="primal">Primal</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="low-fodmap" name="low-fodmap"></input>
+            <input
+              type="checkbox"
+              value="Low FODMAP"
+              id="low-fodmap"
+              name="low-fodmap"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Low FODMAP"}
+            ></input>
             <label htmlFor="low-fodmap">Low FODMAP</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="whole-30" name="whole-30"></input>
+            <input
+              type="checkbox"
+              value="Whole30"
+              id="whole-30"
+              name="whole-30"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Whole30"}
+            ></input>
             <label htmlFor="whole-30">Whole30</label>
           </div>
         </div>
