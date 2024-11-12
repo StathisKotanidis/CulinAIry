@@ -1,14 +1,7 @@
-import { useState } from "react";
 import { useFilters } from "../context/FiltersProvider";
 
 function DietFilter() {
-  const { toggles, onHandleToggle } = useFilters();
-  const [checkboxInput, setCheckboxInput] = useState("");
-
-  function handleCheckboxes(e) {
-    setCheckboxInput(checkboxInput === "" ? e.target.value : "");
-  }
-
+  const { toggles, onHandleToggle, dietInput, handleDietInput } = useFilters();
   return (
     <div className="flex flex-col">
       <button onClick={() => onHandleToggle("diet")} className="filters-button">
@@ -37,8 +30,8 @@ function DietFilter() {
               value="Gluten Free"
               id="gluten-free"
               name="gluten-free"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Gluten Free"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Gluten Free"}
             ></input>
             <label htmlFor="gluten-free">Gluten Free</label>
           </div>
@@ -48,8 +41,8 @@ function DietFilter() {
               value="Ketogenic"
               id="ketogenic"
               name="ketogenic"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Ketogenic"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Ketogenic"}
             ></input>
             <label htmlFor="ketogenic">Ketogenic</label>
           </div>
@@ -59,8 +52,8 @@ function DietFilter() {
               value="Vegetarian"
               id="vegetarian"
               name="vegetarian"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Vegetarian"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Vegetarian"}
             ></input>
             <label htmlFor="vegetarian">Vegetarian</label>
           </div>
@@ -70,8 +63,8 @@ function DietFilter() {
               value="Lacto-Vegetarian"
               id="lacto-vegetarian"
               name="lacto-vegetarian"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Lacto-Vegetarian"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Lacto-Vegetarian"}
             ></input>
             <label htmlFor="lacto-vegetarian">Lacto-Vegetarian</label>
           </div>
@@ -81,8 +74,8 @@ function DietFilter() {
               value="Ovo-Vegetarian"
               id="ovo-vegetarian"
               name="ovo-vegetarian"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Ovo-Vegetarian"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Ovo-Vegetarian"}
             ></input>
             <label htmlFor="ovo-vegetarian">Ovo-Vegetarian</label>
           </div>
@@ -92,8 +85,8 @@ function DietFilter() {
               value="Vegan"
               id="vegan"
               name="vegan"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Vegan"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Vegan"}
             ></input>
             <label htmlFor="vegan">Vegan</label>
           </div>
@@ -103,8 +96,8 @@ function DietFilter() {
               value="Pescetarian"
               id="pescetarian"
               name="pescetarian"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Pescetarian"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Pescetarian"}
             ></input>
             <label htmlFor="pescetarian">Pescetarian</label>
           </div>
@@ -114,8 +107,8 @@ function DietFilter() {
               value="Paleo"
               id="paleo"
               name="paleo"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Paleo"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Paleo"}
             ></input>
             <label htmlFor="paleo">Paleo</label>
           </div>
@@ -125,8 +118,8 @@ function DietFilter() {
               value="Primal"
               id="primal"
               name="primal"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Primal"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Primal"}
             ></input>
             <label htmlFor="primal">Primal</label>
           </div>
@@ -136,8 +129,8 @@ function DietFilter() {
               value="Low FODMAP"
               id="low-fodmap"
               name="low-fodmap"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Low FODMAP"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Low FODMAP"}
             ></input>
             <label htmlFor="low-fodmap">Low FODMAP</label>
           </div>
@@ -147,8 +140,8 @@ function DietFilter() {
               value="Whole30"
               id="whole-30"
               name="whole-30"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Whole30"}
+              onChange={handleDietInput}
+              disabled={dietInput && dietInput !== "Whole30"}
             ></input>
             <label htmlFor="whole-30">Whole30</label>
           </div>

@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { useFilters } from "../context/FiltersProvider";
 
 function IntolerancesFilter() {
   const { toggles, onHandleToggle } = useFilters();
+  const [checkboxInput, setCheckboxInput] = useState("");
+
+  function handleCheckboxes(e) {
+    setCheckboxInput(checkboxInput === "" ? e.target.value : "");
+  }
+
   return (
     <div className="flex flex-col">
       <button
@@ -28,55 +35,146 @@ function IntolerancesFilter() {
       {toggles.intolerances && (
         <div className="all-checkboxes-container">
           <div className="checkbox-container">
-            <input type="checkbox" id="dairy" name="dairy"></input>
+            <input
+              type="checkbox"
+              value="Dairy"
+              id="dairy"
+              name="dairy"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Dairy"}
+            ></input>
             <label htmlFor="dairy">Dairy</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="egg" name="egg"></input>
+            <input
+              type="checkbox"
+              value="Egg"
+              id="egg"
+              name="egg"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Egg"}
+            ></input>
             <label htmlFor="egg">Egg</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="gluten" name="gluten"></input>
+            <input
+              type="checkbox"
+              value="Gluten"
+              id="gluten"
+              name="gluten"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Gluten"}
+            ></input>
             <label htmlFor="gluten">Gluten</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="grain" name="grain"></input>
+            <input
+              type="checkbox"
+              value="Grain"
+              id="grain"
+              name="grain"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Grain"}
+            ></input>
             <label htmlFor="grain">Grain</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="peanut" name="peanut"></input>
+            <input
+              type="checkbox"
+              value="Peanut"
+              id="peanut"
+              name="peanut"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Peanut"}
+            ></input>
             <label htmlFor="peanut">Peanut</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="seafood" name="seafood"></input>
+            <input
+              type="checkbox"
+              value="Seafood"
+              id="seafood"
+              name="seafood"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Seafood"}
+            ></input>
             <label htmlFor="seafood">Seafood</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="sesame" name="sesame"></input>
+            <input
+              type="checkbox"
+              value="Sesame"
+              id="sesame"
+              name="sesame"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Sesame"}
+            ></input>
             <label htmlFor="sesame">Sesame</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="paleo" name="paleo"></input>
+            <input
+              type="checkbox"
+              value="Paleo"
+              id="paleo"
+              name="paleo"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Paleo"}
+            ></input>
             <label htmlFor="paleo">Paleo</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="shellfish" name="shellfish"></input>
+            <input
+              type="checkbox"
+              value="Shellfish"
+              id="shellfish"
+              name="shellfish"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Shellfish"}
+            ></input>
             <label htmlFor="shellfish">Shellfish</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="soy" name="soy"></input>
+            <input
+              type="checkbox"
+              value="Soy"
+              id="soy"
+              name="soy"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Soy"}
+            ></input>
             <label htmlFor="soy">Soy</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="sulfite" name="sulfite"></input>
+            <input
+              type="checkbox"
+              value="Sulfite"
+              id="sulfite"
+              name="sulfite"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Sulfite"}
+            ></input>
             <label htmlFor="sulfite">Sulfite</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="tree-nut" name="tree-nut"></input>
+            <input
+              type="checkbox"
+              value="Tree Nut"
+              id="tree-nut"
+              name="tree-nut"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Tree Nut"}
+            ></input>
             <label htmlFor="tree-nut">Tree Nut</label>
           </div>
           <div className="checkbox-container">
-            <input type="checkbox" id="wheat" name="wheat"></input>
+            <input
+              type="checkbox"
+              value="Wheat"
+              id="wheat"
+              name="wheat"
+              onChange={(e) => handleCheckboxes(e)}
+              disabled={checkboxInput && checkboxInput !== "Wheat"}
+            ></input>
             <label htmlFor="wheat">Wheat</label>
           </div>
         </div>
