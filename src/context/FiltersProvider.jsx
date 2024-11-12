@@ -16,6 +16,22 @@ const initialState = {
   dietInput: "",
   cuisineInput: "",
   intoleranceInputs: [],
+  caloriesInput: "",
+  proteinInput: "",
+  carbsInput: "",
+  cholesterolInput: "",
+  fatInput: "",
+  calciumInput: "",
+  fiberInput: "",
+  ironInout: "",
+  zincInput: "",
+  sugarInput: "",
+  potassiumInput: "",
+  phosphorusInput: "",
+  magnesiumInput: "",
+  vitaminAInput: "",
+  vitaminBInput: "",
+  vitaminCInput: "",
 };
 
 function reducer(state, action) {
@@ -48,15 +64,24 @@ function reducer(state, action) {
       }
 
       return { ...state, intoleranceInputs: intolerancesArray };
-
+    case "CALORIES_INPUT":
+      return { ...state, caloriesInput: action.payload };
+    case "NUTRIENTS_INPUTS":
+      const { nutrientName, selectedNutrient } = action.payload;
+      return {
+        ...state,
+        [`${nutrientName}Input`]: selectedNutrient, // Dynamic key for nutrient input
+      };
     default:
       return state;
   }
 }
 
 function FiltersProvider({ children }) {
-  const [{ toggles, dietInput, cuisineInput, intoleranceInputs }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { toggles, dietInput, cuisineInput, intoleranceInputs, caloriesInput },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   // a function that handles the toggle functionality of each filter
   function handleToggle(filterName) {
@@ -90,6 +115,20 @@ function FiltersProvider({ children }) {
     });
   }
 
+  // a function that handles the calories input
+  function handleCaloriesInput(e) {
+    dispatch({ type: "CALORIES_INPUT", payload: e.target.value });
+  }
+
+  //a function that handles the nutrients inputs
+  function handleNutrientsInputs(nutrientName, e) {
+    const selectedNutrient = e.target.value;
+    dispatch({
+      type: "NUTRIENTS_INPUTS",
+      payload: { selectedNutrient, nutrientName },
+    });
+  }
+
   // 2.This is where i return my provider
   return (
     <FiltersContext.Provider
@@ -102,6 +141,8 @@ function FiltersProvider({ children }) {
         handleCuisineInput,
         intoleranceInputs,
         handleIntoleranceInputs,
+        handleCaloriesInput,
+        handleNutrientsInputs,
       }}
     >
       {children}
