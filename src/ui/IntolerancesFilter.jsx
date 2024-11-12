@@ -1,13 +1,7 @@
-import { useState } from "react";
 import { useFilters } from "../context/FiltersProvider";
 
 function IntolerancesFilter() {
-  const { toggles, onHandleToggle } = useFilters();
-  const [checkboxInput, setCheckboxInput] = useState("");
-
-  function handleCheckboxes(e) {
-    setCheckboxInput(checkboxInput === "" ? e.target.value : "");
-  }
+  const { toggles, onHandleToggle, handleIntoleranceInputs } = useFilters();
 
   return (
     <div className="flex flex-col">
@@ -40,8 +34,7 @@ function IntolerancesFilter() {
               value="Dairy"
               id="dairy"
               name="dairy"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Dairy"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="dairy">Dairy</label>
           </div>
@@ -51,8 +44,7 @@ function IntolerancesFilter() {
               value="Egg"
               id="egg"
               name="egg"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Egg"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="egg">Egg</label>
           </div>
@@ -62,8 +54,7 @@ function IntolerancesFilter() {
               value="Gluten"
               id="gluten"
               name="gluten"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Gluten"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="gluten">Gluten</label>
           </div>
@@ -73,8 +64,7 @@ function IntolerancesFilter() {
               value="Grain"
               id="grain"
               name="grain"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Grain"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="grain">Grain</label>
           </div>
@@ -84,8 +74,7 @@ function IntolerancesFilter() {
               value="Peanut"
               id="peanut"
               name="peanut"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Peanut"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="peanut">Peanut</label>
           </div>
@@ -95,8 +84,7 @@ function IntolerancesFilter() {
               value="Seafood"
               id="seafood"
               name="seafood"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Seafood"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="seafood">Seafood</label>
           </div>
@@ -106,8 +94,7 @@ function IntolerancesFilter() {
               value="Sesame"
               id="sesame"
               name="sesame"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Sesame"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="sesame">Sesame</label>
           </div>
@@ -117,8 +104,7 @@ function IntolerancesFilter() {
               value="Paleo"
               id="paleo"
               name="paleo"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Paleo"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="paleo">Paleo</label>
           </div>
@@ -128,8 +114,7 @@ function IntolerancesFilter() {
               value="Shellfish"
               id="shellfish"
               name="shellfish"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Shellfish"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="shellfish">Shellfish</label>
           </div>
@@ -139,8 +124,7 @@ function IntolerancesFilter() {
               value="Soy"
               id="soy"
               name="soy"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Soy"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="soy">Soy</label>
           </div>
@@ -150,8 +134,7 @@ function IntolerancesFilter() {
               value="Sulfite"
               id="sulfite"
               name="sulfite"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Sulfite"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="sulfite">Sulfite</label>
           </div>
@@ -161,8 +144,7 @@ function IntolerancesFilter() {
               value="Tree Nut"
               id="tree-nut"
               name="tree-nut"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Tree Nut"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="tree-nut">Tree Nut</label>
           </div>
@@ -172,8 +154,7 @@ function IntolerancesFilter() {
               value="Wheat"
               id="wheat"
               name="wheat"
-              onChange={(e) => handleCheckboxes(e)}
-              disabled={checkboxInput && checkboxInput !== "Wheat"}
+              onChange={handleIntoleranceInputs}
             ></input>
             <label htmlFor="wheat">Wheat</label>
           </div>

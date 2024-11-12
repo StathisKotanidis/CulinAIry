@@ -15,7 +15,7 @@ const initialState = {
   currentFilter: "",
   dietInput: "",
   cuisineInput: "",
-  intoleranceInput: "",
+  intoleranceInputs: [],
 };
 
 function reducer(state, action) {
@@ -33,8 +33,21 @@ function reducer(state, action) {
       return { ...state, dietInput: action.payload };
     case "CUISINE_INPUT":
       return { ...state, cuisineInput: action.payload };
-    case "CUISINE_INPUT":
-      return { ...state, cuisineInput: action.payload };
+    case "INTOLERANCE_INPUTS":
+      const selectedIntolerance = action.payload;
+      let intolerancesArray;
+
+      if (state.intoleranceInputs.includes(selectedIntolerance)) {
+        // If intolerance is already selected, remove it (uncheck)
+        intolerancesArray = state.intoleranceInputs.filter(
+          (intolerance) => intolerance !== selectedIntolerance,
+        );
+      } else {
+        // Otherwise, add the new intolerance (check)
+        intolerancesArray = [...state.intoleranceInputs, selectedIntolerance];
+      }
+
+      return { ...state, intoleranceInputs: intolerancesArray };
 
     default:
       return state;
@@ -42,7 +55,7 @@ function reducer(state, action) {
 }
 
 function FiltersProvider({ children }) {
-  const [{ toggles, dietInput, cuisineInput, intoleranceInput }, dispatch] =
+  const [{ toggles, dietInput, cuisineInput, intoleranceInputs }, dispatch] =
     useReducer(reducer, initialState);
 
   // a function that handles the toggle functionality of each filter
@@ -68,13 +81,12 @@ function FiltersProvider({ children }) {
     });
   }
 
-  // a function that handles the intolerance input (can be only one input)
+  // a function that handles the intolerance inputs (can be multiple)
   function handleIntoleranceInputs(e) {
-    const selectedIntolerances = [];
+    const selectedIntolerance = e.target.value;
     dispatch({
       type: "INTOLERANCE_INPUTS",
-      payload:
-        intoleranceInput === selectedIntolerance ? "" : selectedIntolerance,
+      payload: selectedIntolerance,
     });
   }
 
@@ -88,8 +100,8 @@ function FiltersProvider({ children }) {
         handleDietInput,
         cuisineInput,
         handleCuisineInput,
-        intoleranceInput,
-        handleIntoleranceInput,
+        intoleranceInputs,
+        handleIntoleranceInputs,
       }}
     >
       {children}
