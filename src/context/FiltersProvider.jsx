@@ -1,11 +1,11 @@
-import { useContext, createContext, useReducer } from "react";
+import { useContext, createContext, useReducer, useEffect } from "react";
 
 //1. Created  a custom context
 const FiltersContext = createContext();
 
 const initialState = {
-  // apiKey: "a239be2908d144789f4a888587b3dc45",
-  baseURL: `https://api.spoonacular.com/recipes/complexSearch?apiKey=a239be2908d144789f4a888587b3dc45&number=5`,
+  apiKey: "a239be2908d144789f4a888587b3dc45",
+  baseURL: "",
   toggles: {
     filters: false,
     cuisine: false,
@@ -25,9 +25,10 @@ const initialState = {
   fatInput: "",
   calciumInput: "",
   fiberInput: "",
-  ironInout: "",
+  ironInput: "",
   zincInput: "",
   sugarInput: "",
+  sodiumInput: "",
   potassiumInput: "",
   phosphorusInput: "",
   magnesiumInput: "",
@@ -51,10 +52,12 @@ function reducer(state, action) {
       return {
         ...state,
         dietInput: action.payload,
-        baseURL: `${initialState.baseURL}&diet=${action.payload}`,
       };
     case "CUISINE_INPUT":
-      return { ...state, cuisineInput: action.payload };
+      return {
+        ...state,
+        cuisineInput: action.payload,
+      };
     case "INTOLERANCE_INPUTS":
       const selectedIntolerance = action.payload;
       let intolerancesArray;
@@ -78,6 +81,11 @@ function reducer(state, action) {
         ...state,
         [`${nutrientName}Input`]: selectedNutrient, // Dynamic key for nutrient input
       };
+    case "UPDATE_BASE_URL":
+      return {
+        ...state,
+        baseURL: action.payload,
+      };
     default:
       return state;
   }
@@ -85,7 +93,31 @@ function reducer(state, action) {
 
 function FiltersProvider({ children }) {
   const [
-    { toggles, dietInput, cuisineInput, intoleranceInputs, caloriesInput },
+    {
+      toggles,
+      dietInput,
+      cuisineInput,
+      intoleranceInputs,
+      caloriesInput,
+      baseURL,
+      apiKey,
+      proteinInput,
+      carbsInput,
+      cholesterolInput,
+      fatInput,
+      calciumInput,
+      fiberInput,
+      ironInput,
+      zincInput,
+      sugarInput,
+      potassiumInput,
+      sodiumInput,
+      phosphorusInput,
+      magnesiumInput,
+      vitaminAInput,
+      vitaminBInput,
+      vitaminCInput,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
 
@@ -134,6 +166,65 @@ function FiltersProvider({ children }) {
       payload: { selectedNutrient, nutrientName },
     });
   }
+
+  useEffect(() => {
+    // Dynamically build the baseURL with filters
+    const buildURL = () => {
+      let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5`;
+      if (dietInput) url += `&diet=${dietInput}`;
+      if (cuisineInput) url += `&cuisine=${cuisineInput}`;
+      if (intoleranceInputs.length >= 1)
+        url += `&intolerances${intoleranceInputs.join()}`;
+      if (caloriesInput) url += `&maxCalories=${caloriesInput}`;
+      if (proteinInput) url += `&minProtein=${proteinInput}`;
+      if (carbsInput) url += `&maxCarbs=${carbsInput}`;
+      if (cholesterolInput) url += `&maxCholesterol=${cholesterolInput}`;
+      if (fatInput) url += `&maxFat=${fatInput}`;
+      if (calciumInput) url += `&minCalcium=${calciumInput}`;
+      if (fiberInput) url += `&minFiber=${fiberInput}`;
+      if (ironInput) url += `&minIron=${ironInput}`;
+      if (zincInput) url += `&minZinc=${zincInput}`;
+      if (sugarInput) url += `&maxSugar=${sugarInput}`;
+      if (potassiumInput) url += `&minPotassium=${potassiumInput}`;
+      if (sodiumInput) url += `&maxSodium=${sodiumInput}`;
+      if (phosphorusInput) url += `&minPhosphorus=${phosphorusInput}`;
+      if (magnesiumInput) url += `&minMagnesium=${magnesiumInput}`;
+      if (vitaminAInput) url += `&minVitaminA=${vitaminAInput}`;
+      if (vitaminBInput) url += `&minVitaminB=${vitaminBInput}`;
+      if (vitaminCInput) url += `&minVitaminC=${vitaminCInput}`;
+
+      // Add more filters as needed
+      return url;
+    };
+
+    // Generate the new baseURL and update state if it has changed
+    const newURL = buildURL();
+    if (newURL !== baseURL) {
+      dispatch({ type: "UPDATE_BASE_URL", payload: newURL });
+    }
+  }, [
+    dietInput,
+    cuisineInput,
+    intoleranceInputs,
+    caloriesInput,
+    proteinInput,
+    carbsInput,
+    cholesterolInput,
+    fatInput,
+    calciumInput,
+    fiberInput,
+    ironInput,
+    zincInput,
+    sugarInput,
+    potassiumInput,
+    sodiumInput,
+    phosphorusInput,
+    magnesiumInput,
+    vitaminAInput,
+    vitaminBInput,
+    vitaminCInput,
+    apiKey,
+  ]);
 
   // 2.This is where i return my provider
   return (
