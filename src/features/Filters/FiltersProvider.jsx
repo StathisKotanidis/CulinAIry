@@ -174,7 +174,7 @@ function FiltersProvider({ children }) {
       if (dietInput) url += `&diet=${dietInput}`;
       if (cuisineInput) url += `&cuisine=${cuisineInput}`;
       if (intoleranceInputs.length >= 1)
-        url += `&intolerances${intoleranceInputs.join()}`;
+        url += `&intolerances=${intoleranceInputs.join()}`;
       if (caloriesInput) url += `&maxCalories=${caloriesInput}`;
       if (proteinInput) url += `&minProtein=${proteinInput}`;
       if (carbsInput) url += `&maxCarbs=${carbsInput}`;

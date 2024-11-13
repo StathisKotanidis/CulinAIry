@@ -1,4 +1,4 @@
-import { useFilters } from "../context/FiltersProvider";
+import { useFilters } from "./FiltersProvider";
 
 function CaloriesFilter() {
   const { toggles, onHandleToggle, handleCaloriesInput } = useFilters();

@@ -1,5 +1,5 @@
-import { FiltersProvider } from "../../context/FiltersProvider";
-import Filters from "../../features/Filters";
+import { FiltersProvider } from "../../features/Filters/FiltersProvider";
+import Filters from "../../features/Filters/Filters";
 
 function Search() {
   return (

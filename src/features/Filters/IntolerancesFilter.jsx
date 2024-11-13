@@ -1,4 +1,4 @@
-import { useFilters } from "../context/FiltersProvider";
+import { useFilters } from "./FiltersProvider";
 
 function IntolerancesFilter() {
   const { toggles, onHandleToggle, handleIntoleranceInputs } = useFilters();
