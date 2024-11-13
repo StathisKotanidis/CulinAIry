@@ -41,13 +41,33 @@ function reducer(state, action) {
   switch (action.type) {
     case "TOGGLE_FILTERS":
       const filterName = action.payload;
+      if (filterName === "filters") {
+        // Toggle the `filters` menu independently
+        return {
+          ...state,
+          toggles: {
+            ...state.toggles,
+            filters: !state.toggles.filters,
+          },
+        };
+      }
+
+      // For individual filters, toggle only the selected filter and close others
       return {
         ...state,
         toggles: {
           ...state.toggles,
-          [filterName]: !state.toggles[filterName],
+          filters: state.toggles.filters, // Keep the main `filters` menu as is
+          cuisine: filterName === "cuisine" ? !state.toggles.cuisine : false,
+          intolerances:
+            filterName === "intolerances" ? !state.toggles.intolerances : false,
+          diet: filterName === "diet" ? !state.toggles.diet : false,
+          nutrients:
+            filterName === "nutrients" ? !state.toggles.nutrients : false,
+          calories: filterName === "calories" ? !state.toggles.calories : false,
         },
       };
+
     case "DIET_INPUT":
       return {
         ...state,
@@ -225,6 +245,16 @@ function FiltersProvider({ children }) {
     vitaminCInput,
     apiKey,
   ]);
+
+  /*Here i will have a useEffect that will handle tha API call 
+
+
+  
+
+
+
+
+  based on my final url */
 
   // 2.This is where i return my provider
   return (
