@@ -4,6 +4,8 @@ import { useContext, createContext, useReducer } from "react";
 const FiltersContext = createContext();
 
 const initialState = {
+  // apiKey: "a239be2908d144789f4a888587b3dc45",
+  baseURL: `https://api.spoonacular.com/recipes/complexSearch?apiKey=a239be2908d144789f4a888587b3dc45&number=5`,
   toggles: {
     filters: false,
     cuisine: false,
@@ -46,7 +48,11 @@ function reducer(state, action) {
         },
       };
     case "DIET_INPUT":
-      return { ...state, dietInput: action.payload };
+      return {
+        ...state,
+        dietInput: action.payload,
+        baseURL: `${initialState.baseURL}&diet=${action.payload}`,
+      };
     case "CUISINE_INPUT":
       return { ...state, cuisineInput: action.payload };
     case "INTOLERANCE_INPUTS":
