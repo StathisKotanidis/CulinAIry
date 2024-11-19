@@ -1,5 +1,6 @@
 import { FiltersProvider } from "../../features/Filters/FiltersProvider";
 import Filters from "../../features/Filters/Filters";
+import Recipe from "../../features/Recipes/Recipe";
 
 function Search() {
   return (
@@ -7,10 +8,8 @@ function Search() {
       <div className="p-2">
         <FiltersProvider>
           <Filters />
+          <Recipe />
         </FiltersProvider>
-      </div>
-      <div className="">
-        <span>All my recipes will be there </span>
       </div>
     </div>
   );

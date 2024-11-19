@@ -1,4 +1,10 @@
-import { useContext, createContext, useReducer, useEffect } from "react";
+import {
+  useContext,
+  createContext,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 
 //1. Created  a custom context
 const FiltersContext = createContext();
@@ -148,11 +154,11 @@ function FiltersProvider({ children }) {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+  const [apiData, setApiData] = useState([]);
 
   //a function that handles the Ingredient Input
   function handleIngredientInput(e) {
     dispatch({ type: "INGREDIENT_INPUT", payload: e.target.value });
-    console.log(ingredientInput);
   }
 
   // a function that handles the toggle functionality of each filter
@@ -260,15 +266,21 @@ function FiltersProvider({ children }) {
     apiKey,
   ]);
 
-  /*Here i will have a useEffect that will handle tha API call 
-
-
-  
-
-
-
-
-  based on my final url */
+  /*Here i make the api call based on my final baseURL  */
+  const getRecipes = async function getData() {
+    try {
+      //Loader will be here
+      const res = await fetch(baseURL);
+      if (!res.ok) throw new Error("Failed fetching the data");
+      const data = await res.json();
+      setApiData(data);
+      console.log(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      //set Loader back to false
+    }
+  };
 
   // 2.This is where i return my provider
   return (
@@ -285,6 +297,8 @@ function FiltersProvider({ children }) {
         handleIntoleranceInputs,
         handleCaloriesInput,
         handleNutrientsInputs,
+        apiData,
+        getRecipes,
       }}
     >
       {children}
