@@ -244,6 +244,7 @@ function FiltersProvider({ children }) {
     }
   }, [
     dietInput,
+    ingredientInput,
     cuisineInput,
     intoleranceInputs,
     caloriesInput,
@@ -297,6 +298,7 @@ function FiltersProvider({ children }) {
         handleIntoleranceInputs,
         handleCaloriesInput,
         handleNutrientsInputs,
+        ingredientInput,
         apiData,
         getRecipes,
       }}
