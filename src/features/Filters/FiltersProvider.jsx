@@ -119,6 +119,8 @@ function reducer(state, action) {
         ...state,
         baseURL: action.payload,
       };
+    case "CLEAR_URL":
+      return initialState;
     default:
       return state;
   }
@@ -207,6 +209,10 @@ function FiltersProvider({ children }) {
     });
   }
 
+  function handleClearUrl() {
+    dispatch({ type: "CLEAR_URL" });
+  }
+
   useEffect(() => {
     // Dynamically build the baseURL based on which filters the user selected
     const buildURL = () => {
@@ -279,6 +285,7 @@ function FiltersProvider({ children }) {
     } catch (error) {
       setError(error.message);
     } finally {
+      handleClearUrl();
       //set Loader back to false
     }
   };
@@ -301,6 +308,7 @@ function FiltersProvider({ children }) {
         ingredientInput,
         apiData,
         getRecipes,
+        handleClearUrl,
       }}
     >
       {children}

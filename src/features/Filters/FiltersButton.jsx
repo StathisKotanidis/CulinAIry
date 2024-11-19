@@ -2,6 +2,12 @@ import { useFilters } from "./FiltersProvider";
 
 function FiltersButton() {
   const { ingredientInput, getRecipes } = useFilters();
+
+  const handleSearch = async () => {
+    await getRecipes;
+    handleClearUrl;
+  };
+
   {
     return ingredientInput ? (
       <div className="flex items-center justify-center">
