@@ -14,6 +14,7 @@ const initialState = {
     nutrients: false,
     calories: false,
   },
+  ingredientInput: "",
   currentFilter: "",
   dietInput: "",
   cuisineInput: "",
@@ -73,6 +74,12 @@ function reducer(state, action) {
         ...state,
         dietInput: action.payload,
       };
+    case "INGREDIENT_INPUT":
+      return {
+        ...state,
+        ingredientInput: action.payload,
+      };
+
     case "CUISINE_INPUT":
       return {
         ...state,
@@ -115,6 +122,7 @@ function FiltersProvider({ children }) {
   const [
     {
       toggles,
+      ingredientInput,
       dietInput,
       cuisineInput,
       intoleranceInputs,
@@ -140,6 +148,12 @@ function FiltersProvider({ children }) {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
+
+  //a function that handles the Ingredient Input
+  function handleIngredientInput(e) {
+    dispatch({ type: "INGREDIENT_INPUT", payload: e.target.value });
+    console.log(ingredientInput);
+  }
 
   // a function that handles the toggle functionality of each filter
   function handleToggle(filterName) {
@@ -188,9 +202,10 @@ function FiltersProvider({ children }) {
   }
 
   useEffect(() => {
-    // Dynamically build the baseURL with filters
+    // Dynamically build the baseURL based on which filters the user selected
     const buildURL = () => {
       let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5`;
+      if (ingredientInput) url += `&query=${ingredientInput}`;
       if (dietInput) url += `&diet=${dietInput}`;
       if (cuisineInput) url += `&cuisine=${cuisineInput}`;
       if (intoleranceInputs.length >= 1)
@@ -213,7 +228,6 @@ function FiltersProvider({ children }) {
       if (vitaminBInput) url += `&minVitaminB=${vitaminBInput}`;
       if (vitaminCInput) url += `&minVitaminC=${vitaminCInput}`;
 
-      // Add more filters as needed
       return url;
     };
 
@@ -262,6 +276,7 @@ function FiltersProvider({ children }) {
       value={{
         toggles,
         onHandleToggle: handleToggle,
+        handleIngredientInput,
         dietInput,
         handleDietInput,
         cuisineInput,
