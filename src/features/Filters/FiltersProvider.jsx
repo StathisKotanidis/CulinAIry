@@ -156,7 +156,8 @@ function FiltersProvider({ children }) {
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   //a function that handles the Ingredient Input
   function handleIngredientInput(e) {
@@ -276,7 +277,7 @@ function FiltersProvider({ children }) {
   /*Here i make the api call based on my final baseURL  */
   const getRecipes = async function getData() {
     try {
-      //Loader will be here
+      setLoading(true);
       const res = await fetch(baseURL);
       if (!res.ok) throw new Error("Failed fetching the data");
       const data = await res.json();
@@ -285,8 +286,8 @@ function FiltersProvider({ children }) {
     } catch (error) {
       setError(error.message);
     } finally {
+      setLoading(false);
       handleClearUrl();
-      //set Loader back to false
     }
   };
 
@@ -309,6 +310,7 @@ function FiltersProvider({ children }) {
         apiData,
         getRecipes,
         handleClearUrl,
+        loading,
       }}
     >
       {children}
