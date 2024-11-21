@@ -1,6 +1,6 @@
 import { FiltersProvider } from "../../features/Filters/FiltersProvider";
 import Filters from "../../features/Filters/Filters";
-import Recipe from "../../features/Recipes/Recipe";
+import Recipes from "../../features/Recipes/Recipes";
 
 function Search() {
   return (
@@ -8,7 +8,7 @@ function Search() {
       <div className="p-2">
         <FiltersProvider>
           <Filters />
-          <Recipe />
+          <Recipes />
         </FiltersProvider>
       </div>
     </div>

@@ -1,18 +1,12 @@
 import { useFilters } from "./FiltersProvider";
 
 function FiltersButton() {
-  const { ingredientInput, getRecipes, handleShowFilters, showFilters } =
-    useFilters();
-
-  // const handleSearch = async () => {
-  //   await getRecipes;
-  //   handleClearUrl;
-  // };
+  const { ingredientInput, getRecipes, handleShowFilters } = useFilters();
 
   const handleSearch = async () => {
     handleShowFilters();
     await getRecipes();
-    // handleClearUrl;
+    handleShowFilters();
   };
 
   {
