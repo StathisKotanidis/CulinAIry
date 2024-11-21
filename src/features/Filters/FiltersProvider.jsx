@@ -21,7 +21,6 @@ const initialState = {
     calories: false,
   },
   showFilters: true,
-  viewRecipes: false,
   ingredientInput: "",
   currentFilter: "",
   dietInput: "",
@@ -125,8 +124,6 @@ function reducer(state, action) {
       return initialState;
     case "SHOW_FILTERS":
       return { ...state, showFilters: action.payload };
-    case "VIEW_RECIPES":
-      return { ...state, viewRecipes: action.payload };
     default:
       return state;
   }
@@ -137,7 +134,6 @@ function FiltersProvider({ children }) {
     {
       toggles,
       showFilters,
-      viewRecipes,
       ingredientInput,
       dietInput,
       cuisineInput,
@@ -170,11 +166,6 @@ function FiltersProvider({ children }) {
   //a function that hides the filters
   function handleShowFilters() {
     dispatch({ type: "SHOW_FILTERS", payload: false });
-  }
-
-  //a function that hides Recipes
-  function handleViewRecipes() {
-    dispatch({ type: "VIEW_RECIPES", payload: true });
   }
 
   //a function that handles the Ingredient Input
@@ -306,8 +297,6 @@ function FiltersProvider({ children }) {
       setError(error.message);
     } finally {
       setLoading(false);
-      // handleClearUrl();
-      // handleShowFilters();
     }
   };
 
@@ -332,8 +321,6 @@ function FiltersProvider({ children }) {
         apiData,
         getRecipes,
         handleClearUrl,
-        viewRecipes,
-        handleViewRecipes,
         loading,
       }}
     >

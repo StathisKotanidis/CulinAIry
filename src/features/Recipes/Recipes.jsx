@@ -13,8 +13,6 @@ function Recipes() {
 
   if (!apiData) return null;
 
-  if (showFilters) return null;
-
   return recipes && recipes?.length > 0 ? (
     <>
       <RecipesList />

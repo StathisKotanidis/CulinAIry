@@ -6,7 +6,6 @@ function FiltersButton() {
   const handleSearch = async () => {
     handleShowFilters();
     await getRecipes();
-    handleShowFilters();
   };
 
   {

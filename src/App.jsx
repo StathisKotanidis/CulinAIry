@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./ui/pages/Homepage";
 import Search from "./ui/pages/Search";
 import "boxicons";
+import { FiltersProvider } from "./features/Filters/FiltersProvider";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/search",
-    element: <Search />,
+    element: (
+      <FiltersProvider>
+        <Search />
+      </FiltersProvider>
+    ),
   },
 ]);
 
