@@ -41,7 +41,7 @@
 
 @layer utilities {
   .spinner {
-    animation: spin 1s linear infinite; /* Use direct animation here */
+    animation: spin 1s linear infinite;
   }
 }
 

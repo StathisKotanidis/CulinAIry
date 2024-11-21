@@ -9,9 +9,9 @@ import IntolerancesFilter from "./IntolerancesFilter";
 import NutrientsFilter from "./NutrientsFilter";
 
 function Filters() {
-  const { toggles } = useFilters();
+  const { toggles, showFilters } = useFilters();
 
-  return (
+  return showFilters ? (
     <div className="flex flex-col gap-2">
       <Ingredient />
       <FiltersToggler />
@@ -26,7 +26,7 @@ function Filters() {
       ) : null}
       <FiltersButton />
     </div>
-  );
+  ) : null;
 }
 
 export default Filters;

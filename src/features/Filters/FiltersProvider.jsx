@@ -20,6 +20,7 @@ const initialState = {
     nutrients: false,
     calories: false,
   },
+  showFilters: true,
   ingredientInput: "",
   currentFilter: "",
   dietInput: "",
@@ -121,6 +122,8 @@ function reducer(state, action) {
       };
     case "CLEAR_URL":
       return initialState;
+    case "SHOW_FILTERS":
+      return { ...state, showFilters: action.payload };
     default:
       return state;
   }
@@ -130,6 +133,7 @@ function FiltersProvider({ children }) {
   const [
     {
       toggles,
+      showFilters,
       ingredientInput,
       dietInput,
       cuisineInput,
@@ -158,6 +162,11 @@ function FiltersProvider({ children }) {
   ] = useReducer(reducer, initialState);
   const [apiData, setApiData] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  //a function that hides the filters
+  function handleShowFilters() {
+    dispatch({ type: "SHOW_FILTERS", payload: false });
+  }
 
   //a function that handles the Ingredient Input
   function handleIngredientInput(e) {
@@ -210,6 +219,7 @@ function FiltersProvider({ children }) {
     });
   }
 
+  // a function that resets the state
   function handleClearUrl() {
     dispatch({ type: "CLEAR_URL" });
   }
@@ -288,6 +298,7 @@ function FiltersProvider({ children }) {
     } finally {
       setLoading(false);
       handleClearUrl();
+      handleShowFilters();
     }
   };
 
@@ -295,6 +306,8 @@ function FiltersProvider({ children }) {
   return (
     <FiltersContext.Provider
       value={{
+        handleShowFilters,
+        showFilters,
         toggles,
         onHandleToggle: handleToggle,
         handleIngredientInput,
