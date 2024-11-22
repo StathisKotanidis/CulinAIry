@@ -165,12 +165,12 @@ function FiltersProvider({ children }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   //a function that hides the filters once i fetch the data
-  function handleShowFilters() {
-    dispatch({ type: "SHOW_FILTERS", payload: false });
-  }
+  // function handleShowFilters() {
+  //   dispatch({ type: "SHOW_FILTERS", payload: false });
+  // }
 
   // a function that handles the toggle functionality of each filter
   function handleToggles(filterName) {
@@ -244,20 +244,20 @@ function FiltersProvider({ children }) {
   }, [apiKey, filters, nutrients]);
 
   /*Here i make the api call based on my final baseURL  */
-  const getRecipes = async function getData() {
-    try {
-      setLoading(true);
-      const res = await fetch(baseURL);
-      if (!res.ok) throw new Error("Failed fetching the data");
-      const data = await res.json();
-      dispatch({ type: "ADD_RECIPES", payload: data.results });
-      console.log(data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const getRecipes = async function getData() {
+  //   try {
+  //     setLoading(true);
+  //     const res = await fetch(baseURL);
+  //     if (!res.ok) throw new Error("Failed fetching the data");
+  //     const data = await res.json();
+  //     dispatch({ type: "ADD_RECIPES", payload: data.results });
+  //     console.log(data);
+  //   } catch (error) {
+  //     setError(error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   // 2.This is where i return my provider
   return (
@@ -268,12 +268,13 @@ function FiltersProvider({ children }) {
         filters,
         handleFilters,
         handleNutrients,
-        handleShowFilters,
-        showFilters,
-        getRecipes,
+        baseURL,
+        // handleShowFilters,
+        // showFilters,
+        // getRecipes,
         handleClearUrl,
-        loading,
-        recipes,
+        // loading,
+        // recipes,
       }}
     >
       {children}

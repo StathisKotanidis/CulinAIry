@@ -1,7 +1,9 @@
+import { useRecipes } from "../Recipes/RecipesProvider";
 import { useFilters } from "./FiltersProvider";
 
 function SearchRecipesButton() {
-  const { filters, getRecipes, handleShowFilters } = useFilters();
+  const { filters } = useFilters();
+  const { getRecipes, handleShowFilters } = useRecipes();
 
   const handleSearch = async () => {
     handleShowFilters();

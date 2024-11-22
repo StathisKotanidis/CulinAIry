@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./ui/pages/Homepage";
 import Search from "./ui/pages/Search";
-// import "boxicons";
+import "boxicons";
 import { FiltersProvider } from "./features/Filters/FiltersProvider";
 import { RecipesProvider } from "./features/Recipes/RecipesProvider";
 

@@ -1,12 +1,13 @@
-import { useFilters } from "../Filters/FiltersProvider";
+// import { useFilters } from "../Filters/FiltersProvider";
 import Loader from "../../ui/Loader";
 import BackToFilters from "./BackToFilters";
 import ShowMoreRecipes from "./ShowMoreRecipes";
 import RecipesNotFound from "./RecipesNotFound";
 import RecipesList from "./RecipesList";
+import { useRecipes } from "./RecipesProvider";
 
 function Recipes() {
-  const { recipes, loading } = useFilters();
+  const { recipes, loading } = useRecipes();
   if (loading) return <Loader />;
 
   return recipes && recipes?.length > 0 ? (

@@ -1,9 +1,8 @@
-import { useFilters } from "../Filters/FiltersProvider";
+// import { useFilters } from "../Filters/FiltersProvider";
+import { useRecipes } from "./RecipesProvider";
 
 function RecipesList() {
-  // const { apiData } = useFilters();
-  const { recipes } = useFilters();
-  // const recipes = apiData?.results;
+  const { recipes } = useRecipes();
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 pt-12">
