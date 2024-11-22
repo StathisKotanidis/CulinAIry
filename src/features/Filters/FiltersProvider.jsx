@@ -12,6 +12,8 @@ const FiltersContext = createContext();
 const initialState = {
   apiKey: "a239be2908d144789f4a888587b3dc45",
   baseURL: "",
+  showFilters: true,
+  recipes: [],
   toggles: {
     filters: false,
     cuisine: false,
@@ -20,14 +22,33 @@ const initialState = {
     nutrients: false,
     calories: false,
   },
-  showFilters: true,
-  recipes: [],
-  ingredientInput: "",
+  filters: {
+    diet: "",
+    cuisine: "",
+    ingredient: "",
+    calories: "",
+    intolerances: [],
+  },
+  nutrients: {
+    protein: "",
+    carbs: "",
+    cholesterol: "",
+    fat: "",
+    calcium: "",
+    fiber: "",
+    iron: "",
+    zinc: "",
+    sugar: "",
+    sodium: "",
+    potassium: "",
+    phosphorus: "",
+    magnesium: "",
+    vitaminA: "",
+    vitaminB: "",
+    vitaminC: "",
+  },
+
   currentFilter: "",
-  dietInput: "",
-  cuisineInput: "",
-  intoleranceInputs: [],
-  caloriesInput: "",
   proteinInput: "",
   carbsInput: "",
   cholesterolInput: "",
@@ -81,34 +102,54 @@ function reducer(state, action) {
       const selectedDiet = action.payload;
       return {
         ...state,
-        dietInput: state.dietInput === selectedDiet ? "" : selectedDiet,
+        filters: {
+          ...state.filters,
+          diet: state.filters.diet === selectedDiet ? "" : selectedDiet,
+        },
       };
     case "CUISINE_INPUT":
       const selectedCuisine = action.payload;
       return {
         ...state,
-        cuisineInput:
-          state.cuisineInput === selectedCuisine ? "" : selectedCuisine,
+        filters: {
+          ...state.filters,
+          cuisine:
+            state.filters.cuisine === selectedCuisine ? "" : selectedCuisine,
+        },
+      };
+    case "INGREDIENT_INPUT":
+      return {
+        ...state,
+        filters: { ...state.filters, ingredient: action.payload },
       };
     case "CALORIES_INPUT":
-      return { ...state, caloriesInput: action.payload };
-    case "INGREDIENT_INPUT":
-      return { ...state, ingredientInput: action.payload };
+      return {
+        ...state,
+        filters: { ...state.filters, calories: action.payload },
+      };
+
     case "INTOLERANCE_INPUT":
       const selectedIntolerance = action.payload;
       let intolerancesArray;
 
-      if (state.intoleranceInputs.includes(selectedIntolerance)) {
-        // If intolerance is already selected, remove it (uncheck)
-        intolerancesArray = state.intoleranceInputs.filter(
+      if (state.filters.intolerances.includes(selectedIntolerance)) {
+        intolerancesArray = state.filters.intolerances.filter(
           (intolerance) => intolerance !== selectedIntolerance,
         );
       } else {
-        // Otherwise, add the new intolerance (check)
-        intolerancesArray = [...state.intoleranceInputs, selectedIntolerance];
+        intolerancesArray = [
+          ...state.filters.intolerances,
+          selectedIntolerance,
+        ];
       }
 
-      return { ...state, intoleranceInputs: intolerancesArray };
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          intolerances: intolerancesArray,
+        },
+      };
 
     case "NUTRIENTS_INPUTS":
       const { nutrientName, selectedNutrient } = action.payload;
@@ -135,15 +176,13 @@ function reducer(state, action) {
 function FiltersProvider({ children }) {
   const [
     {
-      toggles,
-      showFilters,
-      ingredientInput,
-      dietInput,
-      cuisineInput,
-      intoleranceInputs,
-      caloriesInput,
-      baseURL,
       apiKey,
+      baseURL,
+      showFilters,
+      recipes,
+      toggles,
+      filters,
+      nutrients,
       proteinInput,
       carbsInput,
       cholesterolInput,
@@ -160,11 +199,10 @@ function FiltersProvider({ children }) {
       vitaminAInput,
       vitaminBInput,
       vitaminCInput,
-      recipes,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  // const [apiData, setApiData] = useState(null);
+
   const [loading, setLoading] = useState(false);
 
   //a function that hides the filters
@@ -208,12 +246,12 @@ function FiltersProvider({ children }) {
     // Dynamically build the baseURL based on which filters the user selected
     const buildURL = () => {
       let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5`;
-      if (ingredientInput) url += `&query=${ingredientInput}`;
-      if (dietInput) url += `&diet=${dietInput}`;
-      if (cuisineInput) url += `&cuisine=${cuisineInput}`;
-      if (intoleranceInputs.length >= 1)
-        url += `&intolerances=${intoleranceInputs.join()}`;
-      if (caloriesInput) url += `&maxCalories=${caloriesInput}`;
+      if (filters.ingredient) url += `&query=${filters.ingredient}`;
+      if (filters.diet) url += `&diet=${filters.diet}`;
+      if (filters.cuisine) url += `&cuisine=${filters.cuisine}`;
+      if (filters.intolerances.length >= 1)
+        url += `&intolerances=${filters.intolerances.join()}`;
+      if (filters.calories) url += `&maxCalories=${filters.calories}`;
       if (proteinInput) url += `&minProtein=${proteinInput}`;
       if (carbsInput) url += `&maxCarbs=${carbsInput}`;
       if (cholesterolInput) url += `&maxCholesterol=${cholesterolInput}`;
@@ -240,11 +278,9 @@ function FiltersProvider({ children }) {
       dispatch({ type: "UPDATE_BASE_URL", payload: newURL });
     }
   }, [
-    dietInput,
-    ingredientInput,
-    cuisineInput,
-    intoleranceInputs,
-    caloriesInput,
+    apiKey,
+    filters,
+    nutrients,
     proteinInput,
     carbsInput,
     cholesterolInput,
@@ -261,7 +297,6 @@ function FiltersProvider({ children }) {
     vitaminAInput,
     vitaminBInput,
     vitaminCInput,
-    apiKey,
   ]);
 
   /*Here i make the api call based on my final baseURL  */
@@ -286,14 +321,11 @@ function FiltersProvider({ children }) {
       value={{
         toggles,
         onHandleToggle: handleToggle,
+        filters,
         handleFilters,
         handleShowFilters,
         showFilters,
-        dietInput,
-        cuisineInput,
-        intoleranceInputs,
         handleNutrientsInputs,
-        ingredientInput,
         getRecipes,
         handleClearUrl,
         loading,

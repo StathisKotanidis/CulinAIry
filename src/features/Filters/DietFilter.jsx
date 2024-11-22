@@ -1,7 +1,7 @@
 import { useFilters } from "./FiltersProvider";
 
 function DietFilter() {
-  const { toggles, onHandleToggle, dietInput, handleFilters } = useFilters();
+  const { toggles, onHandleToggle, filters, handleFilters } = useFilters();
   return (
     <div className="flex flex-col">
       <button onClick={() => onHandleToggle("diet")} className="filters-button">
@@ -31,7 +31,7 @@ function DietFilter() {
               id="gluten-free"
               name="gluten-free"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Gluten Free"}
+              disabled={filters.diet && filters.diet !== "Gluten Free"}
             ></input>
             <label htmlFor="gluten-free">Gluten Free</label>
           </div>
@@ -42,7 +42,7 @@ function DietFilter() {
               id="ketogenic"
               name="ketogenic"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Ketogenic"}
+              disabled={filters.diet && filters.diet !== "Ketogenic"}
             ></input>
             <label htmlFor="ketogenic">Ketogenic</label>
           </div>
@@ -53,7 +53,7 @@ function DietFilter() {
               id="vegetarian"
               name="vegetarian"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Vegetarian"}
+              disabled={filters.diet && filters.diet !== "Vegetarian"}
             ></input>
             <label htmlFor="vegetarian">Vegetarian</label>
           </div>
@@ -64,7 +64,7 @@ function DietFilter() {
               id="lacto-vegetarian"
               name="lacto-vegetarian"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Lacto-Vegetarian"}
+              disabled={filters.diet && filters.diet !== "Lacto-Vegetarian"}
             ></input>
             <label htmlFor="lacto-vegetarian">Lacto-Vegetarian</label>
           </div>
@@ -75,7 +75,7 @@ function DietFilter() {
               id="ovo-vegetarian"
               name="ovo-vegetarian"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Ovo-Vegetarian"}
+              disabled={filters.diet && filters.diet !== "Ovo-Vegetarian"}
             ></input>
             <label htmlFor="ovo-vegetarian">Ovo-Vegetarian</label>
           </div>
@@ -86,7 +86,7 @@ function DietFilter() {
               id="vegan"
               name="vegan"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Vegan"}
+              disabled={filters.diet && filters.diet !== "Vegan"}
             ></input>
             <label htmlFor="vegan">Vegan</label>
           </div>
@@ -97,7 +97,7 @@ function DietFilter() {
               id="pescetarian"
               name="pescetarian"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Pescetarian"}
+              disabled={filters.diet && filters.diet !== "Pescetarian"}
             ></input>
             <label htmlFor="pescetarian">Pescetarian</label>
           </div>
@@ -108,7 +108,7 @@ function DietFilter() {
               id="paleo"
               name="paleo"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Paleo"}
+              disabled={filters.diet && filters.diet !== "Paleo"}
             ></input>
             <label htmlFor="paleo">Paleo</label>
           </div>
@@ -119,7 +119,7 @@ function DietFilter() {
               id="primal"
               name="primal"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Primal"}
+              disabled={filters.diet && filters.diet !== "Primal"}
             ></input>
             <label htmlFor="primal">Primal</label>
           </div>
@@ -130,7 +130,7 @@ function DietFilter() {
               id="low-fodmap"
               name="low-fodmap"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Low FODMAP"}
+              disabled={filters.diet && filters.diet !== "Low FODMAP"}
             ></input>
             <label htmlFor="low-fodmap">Low FODMAP</label>
           </div>
@@ -141,7 +141,7 @@ function DietFilter() {
               id="whole-30"
               name="whole-30"
               onChange={(e) => handleFilters("diet", e)}
-              disabled={dietInput && dietInput !== "Whole30"}
+              disabled={filters.diet && filters.diet !== "Whole30"}
             ></input>
             <label htmlFor="whole-30">Whole30</label>
           </div>
