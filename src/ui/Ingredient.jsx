@@ -1,7 +1,7 @@
 import { useFilters } from "../features/Filters/FiltersProvider";
 
 function Ingredient() {
-  const { handleIngredientInput } = useFilters();
+  const { handleFilters } = useFilters();
   return (
     <div className="flex justify-center items-align">
       <input
@@ -10,7 +10,7 @@ function Ingredient() {
         type="text"
         name="ingredient"
         id="ingredient"
-        onChange={handleIngredientInput}
+        onChange={(e) => handleFilters("ingredient", e)}
       ></input>
       <label htmlFor="ingredient" className="hidden"></label>
     </div>

@@ -1,7 +1,7 @@
 import { useFilters } from "./FiltersProvider";
 
 function CaloriesFilter() {
-  const { toggles, onHandleToggle, handleCaloriesInput } = useFilters();
+  const { toggles, onHandleToggle, handleFilters } = useFilters();
   return (
     <div className="flex flex-col">
       <button
@@ -36,7 +36,7 @@ function CaloriesFilter() {
               type="number"
               id="calories"
               name="calories"
-              onChange={handleCaloriesInput}
+              onChange={(e) => handleFilters("calories", e)}
             ></input>
           </div>
         </div>

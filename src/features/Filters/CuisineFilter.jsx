@@ -1,8 +1,7 @@
 import { useFilters } from "./FiltersProvider";
 
 function CuisineFilter() {
-  const { toggles, onHandleToggle, cuisineInput, handleCuisineInput } =
-    useFilters();
+  const { toggles, onHandleToggle, cuisineInput, handleFilters } = useFilters();
 
   return (
     <div className="flex flex-col">
@@ -36,7 +35,7 @@ function CuisineFilter() {
               id="african"
               name="african"
               value="African"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "African"}
             ></input>
             <label htmlFor="african">African</label>
@@ -47,7 +46,7 @@ function CuisineFilter() {
               id="asian"
               name="asian"
               value="Asian"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Asian"}
             ></input>
             <label htmlFor="asian">Asian</label>
@@ -58,7 +57,7 @@ function CuisineFilter() {
               id="american"
               name="american"
               value="American"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "American"}
             ></input>
             <label htmlFor="american">American</label>
@@ -69,7 +68,7 @@ function CuisineFilter() {
               id="british"
               name="british"
               value="British"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "British"}
             ></input>
             <label htmlFor="british">British</label>
@@ -80,7 +79,7 @@ function CuisineFilter() {
               id="cajun"
               name="cajun"
               value="Cajun"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Cajun"}
             ></input>
             <label htmlFor="cajun">Cajun</label>
@@ -91,7 +90,7 @@ function CuisineFilter() {
               id="caribbean"
               name="caribbean"
               value="Caribbean"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Caribbean"}
             ></input>
             <label htmlFor="caribbean">Caribbean</label>
@@ -102,7 +101,7 @@ function CuisineFilter() {
               id="chinese"
               name="chinese"
               value="Chinese"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Chinese"}
             ></input>
             <label htmlFor="chinese">Chinese</label>
@@ -113,7 +112,7 @@ function CuisineFilter() {
               id="eastern-eu"
               name="eastern-eur"
               value="Eastern Europe"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Eastern Europe"}
             ></input>
             <label htmlFor="eastern-eu">Eastern European</label>
@@ -124,7 +123,7 @@ function CuisineFilter() {
               id="european"
               name="european"
               value="European"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "European"}
             ></input>
             <label htmlFor="european">European</label>
@@ -135,7 +134,7 @@ function CuisineFilter() {
               id="french"
               name="french"
               value="French"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "French"}
             ></input>
             <label htmlFor="french">French</label>
@@ -146,7 +145,7 @@ function CuisineFilter() {
               id="german"
               name="german"
               value="German"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "German"}
             ></input>
             <label htmlFor="german">German</label>
@@ -157,7 +156,7 @@ function CuisineFilter() {
               id="greek"
               name="greek"
               value="Greek"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Greek"}
             ></input>
             <label htmlFor="greek">Greek</label>
@@ -168,7 +167,7 @@ function CuisineFilter() {
               id="indian"
               name="indian"
               value="Indian"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Indian"}
             ></input>
             <label htmlFor="indian">Indian</label>
@@ -179,7 +178,7 @@ function CuisineFilter() {
               id="irish"
               name="irish"
               value="Irish"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Irish"}
             ></input>
             <label htmlFor="irish">Irish</label>
@@ -190,7 +189,7 @@ function CuisineFilter() {
               id="italian"
               name="italian"
               value="Italian"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Italian"}
             ></input>
             <label htmlFor="italian">Italian</label>
@@ -201,7 +200,7 @@ function CuisineFilter() {
               id="japanese"
               name="japanese"
               value="Japanese"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Japanese"}
             ></input>
             <label htmlFor="japanese">Japanese</label>
@@ -212,7 +211,7 @@ function CuisineFilter() {
               id="jewish"
               name="jewish"
               value="Jewish"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Jewish"}
             ></input>
             <label htmlFor="jewish">Jewish</label>
@@ -223,7 +222,7 @@ function CuisineFilter() {
               id="korean"
               name="korean"
               value="Korean"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Korean"}
             ></input>
             <label htmlFor="korean">Korean</label>
@@ -234,7 +233,7 @@ function CuisineFilter() {
               id="latin"
               name="latin"
               value="Latin American"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Latin American"}
             ></input>
             <label htmlFor="latin">Latin American</label>
@@ -245,7 +244,7 @@ function CuisineFilter() {
               id="medit"
               name="medit"
               value="Mediterranean"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Mediterranean"}
             ></input>
             <label htmlFor="mediterranean">Mediterranean</label>
@@ -256,7 +255,7 @@ function CuisineFilter() {
               id="mexican"
               name="mexican"
               value="Mexican"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Mexican"}
             ></input>
             <label htmlFor="mexican">Mexican</label>
@@ -267,7 +266,7 @@ function CuisineFilter() {
               id="middle-east"
               name="middle-east"
               value="Middle Eastern"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Middle Eastern"}
             ></input>
             <label htmlFor="middle-east">Middle Eastern</label>
@@ -278,7 +277,7 @@ function CuisineFilter() {
               id="nordic"
               name="nordic"
               value="Nordic"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Nordic"}
             ></input>
             <label htmlFor="nordic">Nordic</label>
@@ -289,7 +288,7 @@ function CuisineFilter() {
               id="spanish"
               name="spanish"
               value="Spanish"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Spanish"}
             ></input>
             <label htmlFor="spanish">Spanish</label>
@@ -300,7 +299,7 @@ function CuisineFilter() {
               id="thai"
               name="thai"
               value="Thai"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Thai"}
             ></input>
             <label htmlFor="thai">Thai</label>
@@ -311,7 +310,7 @@ function CuisineFilter() {
               id="vietnamese"
               name="vietnamese"
               value="Vietnamese"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Vietnamese"}
             ></input>
             <label htmlFor="vietnamese">Vietnamese</label>
@@ -322,7 +321,7 @@ function CuisineFilter() {
               id="southern"
               name="southern"
               value="Southern"
-              onChange={handleCuisineInput}
+              onChange={(e) => handleFilters("cuisine", e)}
               disabled={cuisineInput && cuisineInput !== "Southern"}
             ></input>
             <label htmlFor="southern">Southern</label>

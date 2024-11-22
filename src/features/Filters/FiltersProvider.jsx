@@ -21,6 +21,7 @@ const initialState = {
     calories: false,
   },
   showFilters: true,
+  recipes: [],
   ingredientInput: "",
   currentFilter: "",
   dietInput: "",
@@ -77,22 +78,23 @@ function reducer(state, action) {
       };
 
     case "DIET_INPUT":
+      const selectedDiet = action.payload;
       return {
         ...state,
-        dietInput: action.payload,
+        dietInput: state.dietInput === selectedDiet ? "" : selectedDiet,
       };
-    case "INGREDIENT_INPUT":
-      return {
-        ...state,
-        ingredientInput: action.payload,
-      };
-
     case "CUISINE_INPUT":
+      const selectedCuisine = action.payload;
       return {
         ...state,
-        cuisineInput: action.payload,
+        cuisineInput:
+          state.cuisineInput === selectedCuisine ? "" : selectedCuisine,
       };
-    case "INTOLERANCE_INPUTS":
+    case "CALORIES_INPUT":
+      return { ...state, caloriesInput: action.payload };
+    case "INGREDIENT_INPUT":
+      return { ...state, ingredientInput: action.payload };
+    case "INTOLERANCE_INPUT":
       const selectedIntolerance = action.payload;
       let intolerancesArray;
 
@@ -107,8 +109,7 @@ function reducer(state, action) {
       }
 
       return { ...state, intoleranceInputs: intolerancesArray };
-    case "CALORIES_INPUT":
-      return { ...state, caloriesInput: action.payload };
+
     case "NUTRIENTS_INPUTS":
       const { nutrientName, selectedNutrient } = action.payload;
       return {
@@ -124,6 +125,8 @@ function reducer(state, action) {
       return initialState;
     case "SHOW_FILTERS":
       return { ...state, showFilters: action.payload };
+    case "ADD_RECIPES":
+      return { ...state, recipes: [...state.recipes, ...action.payload] };
     default:
       return state;
   }
@@ -157,10 +160,11 @@ function FiltersProvider({ children }) {
       vitaminAInput,
       vitaminBInput,
       vitaminCInput,
+      recipes,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
-  const [apiData, setApiData] = useState(null);
+  // const [apiData, setApiData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   //a function that hides the filters
@@ -168,46 +172,22 @@ function FiltersProvider({ children }) {
     dispatch({ type: "SHOW_FILTERS", payload: false });
   }
 
-  //a function that handles the Ingredient Input
-  function handleIngredientInput(e) {
-    dispatch({ type: "INGREDIENT_INPUT", payload: e.target.value });
-  }
-
   // a function that handles the toggle functionality of each filter
   function handleToggle(filterName) {
     dispatch({ type: "TOGGLE_FILTERS", payload: filterName });
   }
 
-  // a function that handles the  diet input (can only be one input)
-  function handleDietInput(e) {
-    const selectedDiet = e.target.value;
-    dispatch({
-      type: "DIET_INPUT",
-      payload: dietInput === selectedDiet ? "" : selectedDiet,
-    });
-  }
-
-  // a function that handles the cuisine input (can be only one input)
-  function handleCuisineInput(e) {
-    const selectedCuisine = e.target.value;
-    dispatch({
-      type: "CUISINE_INPUT",
-      payload: cuisineInput === selectedCuisine ? "" : selectedCuisine,
-    });
-  }
-
-  // a function that handles the intolerance inputs (can be multiple)
-  function handleIntoleranceInputs(e) {
-    const selectedIntolerance = e.target.value;
-    dispatch({
-      type: "INTOLERANCE_INPUTS",
-      payload: selectedIntolerance,
-    });
-  }
-
-  // a function that handles the calories input
-  function handleCaloriesInput(e) {
-    dispatch({ type: "CALORIES_INPUT", payload: e.target.value });
+  function handleFilters(filtername, e) {
+    if (filtername === "ingredient")
+      dispatch({ type: "INGREDIENT_INPUT", payload: e.target.value });
+    if (filtername === "diet")
+      dispatch({ type: "DIET_INPUT", payload: e.target.value });
+    if (filtername === "cuisine")
+      dispatch({ type: "CUISINE_INPUT", payload: e.target.value });
+    if (filtername === "intolerance")
+      dispatch({ type: "INTOLERANCE_INPUT", payload: e.target.value });
+    if (filtername === "calories")
+      dispatch({ type: "CALORIES_INPUT", payload: e.target.value });
   }
 
   //a function that handles the nutrients inputs
@@ -291,7 +271,7 @@ function FiltersProvider({ children }) {
       const res = await fetch(baseURL);
       if (!res.ok) throw new Error("Failed fetching the data");
       const data = await res.json();
-      setApiData(data);
+      dispatch({ type: "ADD_RECIPES", payload: data.results });
       console.log(data);
     } catch (error) {
       setError(error.message);
@@ -304,24 +284,20 @@ function FiltersProvider({ children }) {
   return (
     <FiltersContext.Provider
       value={{
-        handleShowFilters,
-        showFilters,
         toggles,
         onHandleToggle: handleToggle,
-        handleIngredientInput,
+        handleFilters,
+        handleShowFilters,
+        showFilters,
         dietInput,
-        handleDietInput,
         cuisineInput,
-        handleCuisineInput,
         intoleranceInputs,
-        handleIntoleranceInputs,
-        handleCaloriesInput,
         handleNutrientsInputs,
         ingredientInput,
-        apiData,
         getRecipes,
         handleClearUrl,
         loading,
+        recipes,
       }}
     >
       {children}

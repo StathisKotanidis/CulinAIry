@@ -6,17 +6,17 @@ import RecipesNotFound from "./RecipesNotFound";
 import RecipesList from "./RecipesList";
 
 function Recipes() {
-  const { apiData, loading, showFilters } = useFilters();
-  const recipes = apiData?.results;
-
+  // const { apiData, loading,  } = useFilters();
+  // const recipes = apiData?.results;
+  const { recipes, loading } = useFilters();
   if (loading) return <Loader />;
 
-  if (!apiData) return null;
+  // if (!apiData) return null;
 
   return recipes && recipes?.length > 0 ? (
     <>
       <RecipesList />
-      <div className="m-auto flex w-3/4 items-center justify-between">
+      <div className="flex items-center justify-between w-3/4 m-auto">
         <BackToFilters />
         <ShowMoreRecipes />
       </div>

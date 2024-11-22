@@ -1,7 +1,7 @@
 import { useFilters } from "./FiltersProvider";
 
 function IntolerancesFilter() {
-  const { toggles, onHandleToggle, handleIntoleranceInputs } = useFilters();
+  const { toggles, onHandleToggle, handleFilters } = useFilters();
 
   return (
     <div className="flex flex-col">
@@ -34,7 +34,7 @@ function IntolerancesFilter() {
               value="Dairy"
               id="dairy"
               name="dairy"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="dairy">Dairy</label>
           </div>
@@ -44,7 +44,7 @@ function IntolerancesFilter() {
               value="Egg"
               id="egg"
               name="egg"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="egg">Egg</label>
           </div>
@@ -54,7 +54,7 @@ function IntolerancesFilter() {
               value="Gluten"
               id="gluten"
               name="gluten"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="gluten">Gluten</label>
           </div>
@@ -64,7 +64,7 @@ function IntolerancesFilter() {
               value="Grain"
               id="grain"
               name="grain"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="grain">Grain</label>
           </div>
@@ -74,7 +74,7 @@ function IntolerancesFilter() {
               value="Peanut"
               id="peanut"
               name="peanut"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="peanut">Peanut</label>
           </div>
@@ -84,7 +84,7 @@ function IntolerancesFilter() {
               value="Seafood"
               id="seafood"
               name="seafood"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="seafood">Seafood</label>
           </div>
@@ -94,7 +94,7 @@ function IntolerancesFilter() {
               value="Sesame"
               id="sesame"
               name="sesame"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="sesame">Sesame</label>
           </div>
@@ -104,7 +104,7 @@ function IntolerancesFilter() {
               value="Paleo"
               id="paleo"
               name="paleo"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="paleo">Paleo</label>
           </div>
@@ -114,7 +114,7 @@ function IntolerancesFilter() {
               value="Shellfish"
               id="shellfish"
               name="shellfish"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="shellfish">Shellfish</label>
           </div>
@@ -124,7 +124,7 @@ function IntolerancesFilter() {
               value="Soy"
               id="soy"
               name="soy"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="soy">Soy</label>
           </div>
@@ -134,7 +134,7 @@ function IntolerancesFilter() {
               value="Sulfite"
               id="sulfite"
               name="sulfite"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="sulfite">Sulfite</label>
           </div>
@@ -144,7 +144,7 @@ function IntolerancesFilter() {
               value="Tree Nut"
               id="tree-nut"
               name="tree-nut"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="tree-nut">Tree Nut</label>
           </div>
@@ -154,7 +154,7 @@ function IntolerancesFilter() {
               value="Wheat"
               id="wheat"
               name="wheat"
-              onChange={handleIntoleranceInputs}
+              onChange={(e) => handleFilters("intolerance", e)}
             ></input>
             <label htmlFor="wheat">Wheat</label>
           </div>
