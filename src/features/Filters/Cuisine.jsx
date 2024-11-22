@@ -1,12 +1,12 @@
 import { useFilters } from "./FiltersProvider";
 
-function CuisineFilter() {
-  const { toggles, onHandleToggle, filters, handleFilters } = useFilters();
+function Cuisine() {
+  const { toggles, handleToggles, filters, handleFilters } = useFilters();
 
   return (
     <div className="flex flex-col">
       <button
-        onClick={() => onHandleToggle("cuisine")}
+        onClick={() => handleToggles("cuisine")}
         className="filters-button"
       >
         <span className="filters-tags">Cuisine</span>
@@ -332,4 +332,4 @@ function CuisineFilter() {
   );
 }
 
-export default CuisineFilter;
+export default Cuisine;

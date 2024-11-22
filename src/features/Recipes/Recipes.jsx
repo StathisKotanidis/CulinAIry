@@ -6,12 +6,8 @@ import RecipesNotFound from "./RecipesNotFound";
 import RecipesList from "./RecipesList";
 
 function Recipes() {
-  // const { apiData, loading,  } = useFilters();
-  // const recipes = apiData?.results;
   const { recipes, loading } = useFilters();
   if (loading) return <Loader />;
-
-  // if (!apiData) return null;
 
   return recipes && recipes?.length > 0 ? (
     <>

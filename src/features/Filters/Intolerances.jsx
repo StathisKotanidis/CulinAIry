@@ -1,12 +1,12 @@
 import { useFilters } from "./FiltersProvider";
 
-function IntolerancesFilter() {
-  const { toggles, onHandleToggle, handleFilters } = useFilters();
+function Intolerances() {
+  const { toggles, handleToggles, handleFilters } = useFilters();
 
   return (
     <div className="flex flex-col">
       <button
-        onClick={() => onHandleToggle("intolerances")}
+        onClick={() => handleToggles("intolerances")}
         className="filters-button"
       >
         <span className="filters-tags">Intolerances</span>
@@ -164,4 +164,4 @@ function IntolerancesFilter() {
   );
 }
 
-export default IntolerancesFilter;
+export default Intolerances;

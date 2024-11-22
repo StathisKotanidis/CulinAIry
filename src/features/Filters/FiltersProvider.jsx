@@ -13,6 +13,7 @@ const initialState = {
   apiKey: "a239be2908d144789f4a888587b3dc45",
   baseURL: "",
   showFilters: true,
+  currentFilter: "",
   recipes: [],
   toggles: {
     filters: false,
@@ -47,24 +48,6 @@ const initialState = {
     vitaminB: "",
     vitaminC: "",
   },
-
-  currentFilter: "",
-  proteinInput: "",
-  carbsInput: "",
-  cholesterolInput: "",
-  fatInput: "",
-  calciumInput: "",
-  fiberInput: "",
-  ironInput: "",
-  zincInput: "",
-  sugarInput: "",
-  sodiumInput: "",
-  potassiumInput: "",
-  phosphorusInput: "",
-  magnesiumInput: "",
-  vitaminAInput: "",
-  vitaminBInput: "",
-  vitaminCInput: "",
 };
 
 function reducer(state, action) {
@@ -128,7 +111,7 @@ function reducer(state, action) {
         filters: { ...state.filters, calories: action.payload },
       };
 
-    case "INTOLERANCE_INPUT":
+    case "INTOLERANCES_INPUTS":
       const selectedIntolerance = action.payload;
       let intolerancesArray;
 
@@ -155,7 +138,10 @@ function reducer(state, action) {
       const { nutrientName, selectedNutrient } = action.payload;
       return {
         ...state,
-        [`${nutrientName}Input`]: selectedNutrient, // Dynamic key for nutrient input
+        nutrients: {
+          ...state.nutrients,
+          [nutrientName]: selectedNutrient,
+        },
       };
     case "UPDATE_BASE_URL":
       return {
@@ -175,61 +161,38 @@ function reducer(state, action) {
 
 function FiltersProvider({ children }) {
   const [
-    {
-      apiKey,
-      baseURL,
-      showFilters,
-      recipes,
-      toggles,
-      filters,
-      nutrients,
-      proteinInput,
-      carbsInput,
-      cholesterolInput,
-      fatInput,
-      calciumInput,
-      fiberInput,
-      ironInput,
-      zincInput,
-      sugarInput,
-      potassiumInput,
-      sodiumInput,
-      phosphorusInput,
-      magnesiumInput,
-      vitaminAInput,
-      vitaminBInput,
-      vitaminCInput,
-    },
+    { apiKey, baseURL, showFilters, recipes, toggles, filters, nutrients },
     dispatch,
   ] = useReducer(reducer, initialState);
 
   const [loading, setLoading] = useState(false);
 
-  //a function that hides the filters
+  //a function that hides the filters once i fetch the data
   function handleShowFilters() {
     dispatch({ type: "SHOW_FILTERS", payload: false });
   }
 
   // a function that handles the toggle functionality of each filter
-  function handleToggle(filterName) {
+  function handleToggles(filterName) {
     dispatch({ type: "TOGGLE_FILTERS", payload: filterName });
   }
 
-  function handleFilters(filtername, e) {
-    if (filtername === "ingredient")
+  // a function that handles all the filters inputs (nutrients treated separately)
+  function handleFilters(filterName, e) {
+    if (filterName === "ingredient")
       dispatch({ type: "INGREDIENT_INPUT", payload: e.target.value });
-    if (filtername === "diet")
+    if (filterName === "diet")
       dispatch({ type: "DIET_INPUT", payload: e.target.value });
-    if (filtername === "cuisine")
+    if (filterName === "cuisine")
       dispatch({ type: "CUISINE_INPUT", payload: e.target.value });
-    if (filtername === "intolerance")
-      dispatch({ type: "INTOLERANCE_INPUT", payload: e.target.value });
-    if (filtername === "calories")
+    if (filterName === "intolerance")
+      dispatch({ type: "INTOLERANCES_INPUTS", payload: e.target.value });
+    if (filterName === "calories")
       dispatch({ type: "CALORIES_INPUT", payload: e.target.value });
   }
 
   //a function that handles the nutrients inputs
-  function handleNutrientsInputs(nutrientName, e) {
+  function handleNutrients(nutrientName, e) {
     const selectedNutrient = e.target.value;
     dispatch({
       type: "NUTRIENTS_INPUTS",
@@ -252,22 +215,23 @@ function FiltersProvider({ children }) {
       if (filters.intolerances.length >= 1)
         url += `&intolerances=${filters.intolerances.join()}`;
       if (filters.calories) url += `&maxCalories=${filters.calories}`;
-      if (proteinInput) url += `&minProtein=${proteinInput}`;
-      if (carbsInput) url += `&maxCarbs=${carbsInput}`;
-      if (cholesterolInput) url += `&maxCholesterol=${cholesterolInput}`;
-      if (fatInput) url += `&maxFat=${fatInput}`;
-      if (calciumInput) url += `&minCalcium=${calciumInput}`;
-      if (fiberInput) url += `&minFiber=${fiberInput}`;
-      if (ironInput) url += `&minIron=${ironInput}`;
-      if (zincInput) url += `&minZinc=${zincInput}`;
-      if (sugarInput) url += `&maxSugar=${sugarInput}`;
-      if (potassiumInput) url += `&minPotassium=${potassiumInput}`;
-      if (sodiumInput) url += `&maxSodium=${sodiumInput}`;
-      if (phosphorusInput) url += `&minPhosphorus=${phosphorusInput}`;
-      if (magnesiumInput) url += `&minMagnesium=${magnesiumInput}`;
-      if (vitaminAInput) url += `&minVitaminA=${vitaminAInput}`;
-      if (vitaminBInput) url += `&minVitaminB=${vitaminBInput}`;
-      if (vitaminCInput) url += `&minVitaminC=${vitaminCInput}`;
+      if (nutrients.protein) url += `&minProtein=${nutrients.protein}`;
+      if (nutrients.carbs) url += `&maxCarbs=${nutrients.carbs}`;
+      if (nutrients.cholesterol)
+        url += `&maxCholesterol=${nutrients.cholesterol}`;
+      if (nutrients.fat) url += `&maxFat=${nutrients.fat}`;
+      if (nutrients.calcium) url += `&minCalcium=${nutrients.calcium}`;
+      if (nutrients.fiber) url += `&minFiber=${nutrients.fiber}`;
+      if (nutrients.iron) url += `&minIron=${nutrients.iron}`;
+      if (nutrients.zinc) url += `&minZinc=${nutrients.zinc}`;
+      if (nutrients.sugar) url += `&maxSugar=${nutrients.sugar}`;
+      if (nutrients.potassium) url += `&minPotassium=${nutrients.potassium}`;
+      if (nutrients.sodium) url += `&maxSodium=${nutrients.sodium}`;
+      if (nutrients.phosphorus) url += `&minPhosphorus=${nutrients.phosphorus}`;
+      if (nutrients.magnesium) url += `&minMagnesium=${nutrients.magnesium}`;
+      if (nutrients.vitaminA) url += `&minVitaminA=${nutrients.vitaminA}`;
+      if (nutrients.vitaminB) url += `&minVitaminB=${nutrients.vitaminB}`;
+      if (nutrients.vitaminC) url += `&minVitaminC=${nutrients.vitaminC}`;
 
       return url;
     };
@@ -277,27 +241,7 @@ function FiltersProvider({ children }) {
     if (newURL !== baseURL) {
       dispatch({ type: "UPDATE_BASE_URL", payload: newURL });
     }
-  }, [
-    apiKey,
-    filters,
-    nutrients,
-    proteinInput,
-    carbsInput,
-    cholesterolInput,
-    fatInput,
-    calciumInput,
-    fiberInput,
-    ironInput,
-    zincInput,
-    sugarInput,
-    potassiumInput,
-    sodiumInput,
-    phosphorusInput,
-    magnesiumInput,
-    vitaminAInput,
-    vitaminBInput,
-    vitaminCInput,
-  ]);
+  }, [apiKey, filters, nutrients]);
 
   /*Here i make the api call based on my final baseURL  */
   const getRecipes = async function getData() {
@@ -320,12 +264,12 @@ function FiltersProvider({ children }) {
     <FiltersContext.Provider
       value={{
         toggles,
-        onHandleToggle: handleToggle,
+        handleToggles,
         filters,
         handleFilters,
+        handleNutrients,
         handleShowFilters,
         showFilters,
-        handleNutrientsInputs,
         getRecipes,
         handleClearUrl,
         loading,

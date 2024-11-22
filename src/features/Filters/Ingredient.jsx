@@ -1,4 +1,4 @@
-import { useFilters } from "../features/Filters/FiltersProvider";
+import { useFilters } from "./FiltersProvider";
 
 function Ingredient() {
   const { handleFilters } = useFilters();

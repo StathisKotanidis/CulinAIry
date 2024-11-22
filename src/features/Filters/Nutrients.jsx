@@ -1,11 +1,11 @@
 import { useFilters } from "./FiltersProvider";
 
-function NutrientsFilter() {
-  const { toggles, onHandleToggle, handleNutrientsInputs } = useFilters();
+function Nutrients() {
+  const { toggles, handleToggles, handleNutrients } = useFilters();
   return (
     <div className="flex flex-col">
       <button
-        onClick={() => onHandleToggle("nutrients")}
+        onClick={() => handleToggles("nutrients")}
         className="filters-button"
       >
         <span className="filters-tags">Nutrients</span>
@@ -31,7 +31,7 @@ function NutrientsFilter() {
       </button>
       {toggles.nutrients && (
         <div className="flex flex-col gap-4">
-          <span className="pb-4 text-center italic text-eggWhite">
+          <span className="pb-4 italic text-center text-eggWhite">
             ** amount of grams per serving **
           </span>
           <div className="nutrients-container">
@@ -45,7 +45,7 @@ function NutrientsFilter() {
               name="protein"
               min="10"
               max="100"
-              onChange={(e) => handleNutrientsInputs("protein", e)}
+              onChange={(e) => handleNutrients("protein", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -59,7 +59,7 @@ function NutrientsFilter() {
               name="carbs"
               min="10"
               max="100"
-              onChange={(e) => handleNutrientsInputs("carbs", e)}
+              onChange={(e) => handleNutrients("carbs", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -73,7 +73,7 @@ function NutrientsFilter() {
               name="cholesterol"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("cholesterol", e)}
+              onChange={(e) => handleNutrients("cholesterol", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -87,7 +87,7 @@ function NutrientsFilter() {
               name="fat"
               min="1"
               max="100"
-              onChange={(e) => handleNutrientsInputs("fat", e)}
+              onChange={(e) => handleNutrients("fat", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -101,7 +101,7 @@ function NutrientsFilter() {
               name="calcium"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("calcium", e)}
+              onChange={(e) => handleNutrients("calcium", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -115,7 +115,7 @@ function NutrientsFilter() {
               name="fiber"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("fiber", e)}
+              onChange={(e) => handleNutrients("fiber", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -129,7 +129,7 @@ function NutrientsFilter() {
               name="iron"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("iron", e)}
+              onChange={(e) => handleNutrients("iron", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -143,7 +143,7 @@ function NutrientsFilter() {
               name="zinc"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("zinc", e)}
+              onChange={(e) => handleNutrients("zinc", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -157,7 +157,7 @@ function NutrientsFilter() {
               name="sugar"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("sugar", e)}
+              onChange={(e) => handleNutrients("sugar", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -171,7 +171,7 @@ function NutrientsFilter() {
               name="sodium"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("sodium", e)}
+              onChange={(e) => handleNutrients("sodium", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -185,7 +185,7 @@ function NutrientsFilter() {
               name="potassium"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("potassium", e)}
+              onChange={(e) => handleNutrients("potassium", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -199,7 +199,7 @@ function NutrientsFilter() {
               name="phosphorus"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("phosphorus", e)}
+              onChange={(e) => handleNutrients("phosphorus", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -213,7 +213,7 @@ function NutrientsFilter() {
               name="magnesium"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("magnesium", e)}
+              onChange={(e) => handleNutrients("magnesium", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -227,7 +227,7 @@ function NutrientsFilter() {
               name="vitaminA"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("vitaminA", e)}
+              onChange={(e) => handleNutrients("vitaminA", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -241,7 +241,7 @@ function NutrientsFilter() {
               name="vitaminB"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("vitaminB", e)}
+              onChange={(e) => handleNutrients("vitaminB", e)}
             ></input>
           </div>
           <div className="nutrients-container">
@@ -255,7 +255,7 @@ function NutrientsFilter() {
               name="vitaminC"
               min="0"
               max="100"
-              onChange={(e) => handleNutrientsInputs("vitaminC", e)}
+              onChange={(e) => handleNutrients("vitaminC", e)}
             ></input>
           </div>
         </div>
@@ -264,4 +264,4 @@ function NutrientsFilter() {
   );
 }
 
-export default NutrientsFilter;
+export default Nutrients;

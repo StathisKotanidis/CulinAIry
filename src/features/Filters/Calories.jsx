@@ -1,11 +1,11 @@
 import { useFilters } from "./FiltersProvider";
 
-function CaloriesFilter() {
-  const { toggles, onHandleToggle, handleFilters } = useFilters();
+function Calories() {
+  const { toggles, handleToggles, handleFilters } = useFilters();
   return (
     <div className="flex flex-col">
       <button
-        onClick={() => onHandleToggle("calories")}
+        onClick={() => handleToggles("calories")}
         className="filters-button"
       >
         <span className="filters-tags">Calories</span>
@@ -45,4 +45,4 @@ function CaloriesFilter() {
   );
 }
 
-export default CaloriesFilter;
+export default Calories;

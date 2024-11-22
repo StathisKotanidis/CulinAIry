@@ -1,10 +1,10 @@
 import { useFilters } from "./FiltersProvider";
 
-function DietFilter() {
-  const { toggles, onHandleToggle, filters, handleFilters } = useFilters();
+function Diet() {
+  const { toggles, handleToggles, filters, handleFilters } = useFilters();
   return (
     <div className="flex flex-col">
-      <button onClick={() => onHandleToggle("diet")} className="filters-button">
+      <button onClick={() => handleToggles("diet")} className="filters-button">
         <span className="filters-tags">Diet</span>
         {!toggles.diet ? (
           <box-icon
@@ -151,4 +151,4 @@ function DietFilter() {
   );
 }
 
-export default DietFilter;
+export default Diet;

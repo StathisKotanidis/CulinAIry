@@ -1,12 +1,12 @@
 import { useFilters } from "./FiltersProvider";
 
 function FiltersToggler() {
-  const { onHandleToggle } = useFilters();
+  const { handleToggles } = useFilters();
   return (
     <div>
       <button
-        onClick={() => onHandleToggle("filters")}
-        className="flex w-full items-center justify-center pb-3 pt-6 text-lg text-eggWhite transition duration-300 ease-in-out hover:scale-110 hover:cursor-pointer"
+        onClick={() => handleToggles("filters")}
+        className="flex items-center justify-center w-full pt-6 pb-3 text-lg transition duration-300 ease-in-out text-eggWhite hover:scale-110 hover:cursor-pointer"
       >
         <box-icon color="#F8E8CC" name="filter"></box-icon>
         <span>Filters</span>

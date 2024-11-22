@@ -1,12 +1,12 @@
 import { useFilters } from "./FiltersProvider";
-import CaloriesFilter from "./CaloriesFilter";
-import CuisineFilter from "./CuisineFilter";
-import DietFilter from "./DietFilter";
-import FiltersButton from "./FiltersButton";
+import Calories from "./Calories";
+import Cuisine from "./Cuisine";
+import Diet from "./Diet";
 import FiltersToggler from "./FiltersToggler";
-import Ingredient from "../../ui/Ingredient";
-import IntolerancesFilter from "./IntolerancesFilter";
-import NutrientsFilter from "./NutrientsFilter";
+import Ingredient from "./Ingredient";
+import Intolerances from "./Intolerances";
+import Nutrients from "./Nutrients";
+import SearchRecipesButton from "./SearchRecipesButton";
 
 function Filters() {
   const { toggles } = useFilters();
@@ -17,14 +17,14 @@ function Filters() {
       <FiltersToggler />
       {toggles.filters ? (
         <>
-          <DietFilter />
-          <CuisineFilter />
-          <NutrientsFilter />
-          <CaloriesFilter />
-          <IntolerancesFilter />
+          <Diet />
+          <Cuisine />
+          <Nutrients />
+          <Calories />
+          <Intolerances />
         </>
       ) : null}
-      <FiltersButton />
+      <SearchRecipesButton />
     </div>
   );
 }
