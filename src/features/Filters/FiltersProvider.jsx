@@ -1,10 +1,4 @@
-import {
-  useContext,
-  createContext,
-  useReducer,
-  useEffect,
-  useState,
-} from "react";
+import { useContext, createContext, useReducer, useEffect } from "react";
 
 //1. Created  a custom context
 const FiltersContext = createContext();
@@ -14,7 +8,7 @@ const initialState = {
   baseURL: "",
   showFilters: true,
   currentFilter: "",
-  recipes: [],
+  offset: 0,
   toggles: {
     filters: false,
     cuisine: false,
@@ -150,27 +144,16 @@ function reducer(state, action) {
       };
     case "CLEAR_URL":
       return initialState;
-    case "SHOW_FILTERS":
-      return { ...state, showFilters: action.payload };
-    case "ADD_RECIPES":
-      return { ...state, recipes: [...state.recipes, ...action.payload] };
+    case "INCREMENT_OFFSET":
+      return { ...state, offset: state.offset + 5 };
     default:
       return state;
   }
 }
 
 function FiltersProvider({ children }) {
-  const [
-    { apiKey, baseURL, showFilters, recipes, toggles, filters, nutrients },
-    dispatch,
-  ] = useReducer(reducer, initialState);
-
-  // const [loading, setLoading] = useState(false);
-
-  //a function that hides the filters once i fetch the data
-  // function handleShowFilters() {
-  //   dispatch({ type: "SHOW_FILTERS", payload: false });
-  // }
+  const [{ apiKey, baseURL, toggles, offset, filters, nutrients }, dispatch] =
+    useReducer(reducer, initialState);
 
   // a function that handles the toggle functionality of each filter
   function handleToggles(filterName) {
@@ -205,10 +188,15 @@ function FiltersProvider({ children }) {
     dispatch({ type: "CLEAR_URL" });
   }
 
+  //a function that increments offset
+  function handleOffset() {
+    dispatch({ type: "INCREMENT_OFFSET" });
+  }
+
   useEffect(() => {
     // Dynamically build the baseURL based on which filters the user selected
     const buildURL = () => {
-      let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5`;
+      let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5&offset=${offset}`;
       if (filters.ingredient) url += `&query=${filters.ingredient}`;
       if (filters.diet) url += `&diet=${filters.diet}`;
       if (filters.cuisine) url += `&cuisine=${filters.cuisine}`;
@@ -241,23 +229,8 @@ function FiltersProvider({ children }) {
     if (newURL !== baseURL) {
       dispatch({ type: "UPDATE_BASE_URL", payload: newURL });
     }
-  }, [apiKey, filters, nutrients]);
-
-  /*Here i make the api call based on my final baseURL  */
-  // const getRecipes = async function getData() {
-  //   try {
-  //     setLoading(true);
-  //     const res = await fetch(baseURL);
-  //     if (!res.ok) throw new Error("Failed fetching the data");
-  //     const data = await res.json();
-  //     dispatch({ type: "ADD_RECIPES", payload: data.results });
-  //     console.log(data);
-  //   } catch (error) {
-  //     setError(error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+    console.log("Building URL with offset:", offset);
+  }, [apiKey, filters, nutrients, offset]);
 
   // 2.This is where i return my provider
   return (
@@ -269,12 +242,8 @@ function FiltersProvider({ children }) {
         handleFilters,
         handleNutrients,
         baseURL,
-        // handleShowFilters,
-        // showFilters,
-        // getRecipes,
         handleClearUrl,
-        // loading,
-        // recipes,
+        handleOffset,
       }}
     >
       {children}

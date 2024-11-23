@@ -1,4 +1,3 @@
-import { useFilters } from "../../features/Filters/FiltersProvider";
 import Filters from "../../features/Filters/Filters";
 import Recipes from "../../features/Recipes/Recipes";
 import { useRecipes } from "../../features/Recipes/RecipesProvider";

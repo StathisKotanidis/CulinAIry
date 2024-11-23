@@ -1,4 +1,3 @@
-// import { useFilters } from "../Filters/FiltersProvider";
 import Loader from "../../ui/Loader";
 import BackToFilters from "./BackToFilters";
 import ShowMoreRecipes from "./ShowMoreRecipes";

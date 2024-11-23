@@ -1,8 +1,18 @@
+import { useRecipes } from "./RecipesProvider";
+
 function ShowMoreRecipes() {
+  const { getRecipes, handleOffset } = useRecipes();
+
+  const handleShowMoreButton = async () => {
+    handleOffset();
+  };
   return (
-    <div className="flex items-center justify-center gap-2 pt-8 hover:cursor-pointer">
+    <button
+      onClick={handleShowMoreButton}
+      className="flex items-center justify-center gap-2 pt-8 hover:cursor-pointer"
+    >
       <span className="text-xl text-eggWhite hover:underline">Show More</span>
-    </div>
+    </button>
   );
 }
 

@@ -1,30 +1,31 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useFilters } from "../Filters/FiltersProvider";
 
 const RecipesContext = createContext();
 
 function RecipesProvider({ children }) {
-  const { baseURL } = useFilters();
+  const { baseURL, handleOffset } = useFilters();
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
-  const [error, setError] = useState(null); // Add error state
+  const [error, setError] = useState(null);
 
   //a function that hides the filters once i fetch the data
   function handleShowFilters() {
-    // dispatch({ type: "SHOW_FILTERS", payload: false });
-    setShowFilters(false);
+    setShowFilters(() => !showFilters);
   }
 
-  const getRecipes = async function getData() {
+  const getRecipes = async function getData(append = false) {
     try {
-      console.log("Fetching data from:", baseURL);
       setLoading(true);
       const res = await fetch(baseURL);
       if (!res.ok) throw new Error("Failed fetching the data");
       const data = await res.json();
-      // dispatch({ type: "ADD_RECIPES", payload: data.results });
-      setRecipes(data.results);
+      if (append) {
+        setRecipes((prevRecipes) => [...prevRecipes, ...data.results]);
+      } else {
+        setRecipes(data.results);
+      }
       console.log(data);
     } catch (error) {
       setError(error.message);
@@ -32,6 +33,12 @@ function RecipesProvider({ children }) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (baseURL) {
+      getRecipes(true); // Automatically fetch when baseURL updates
+    }
+  }, [baseURL]);
 
   return (
     <RecipesContext.Provider
@@ -42,6 +49,7 @@ function RecipesProvider({ children }) {
         recipes,
         handleShowFilters,
         showFilters,
+        handleOffset,
       }}
     >
       {children}

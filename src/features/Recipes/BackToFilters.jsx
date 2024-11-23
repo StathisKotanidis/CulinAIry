@@ -1,11 +1,14 @@
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { useFilters } from "../Filters/FiltersProvider";
+import { useRecipes } from "./RecipesProvider";
 
 function BackToFilters() {
   const { handleClearUrl } = useFilters();
+  const { handleShowFilters } = useRecipes();
 
   const handleRecipes = () => {
     handleClearUrl();
+    handleShowFilters();
   };
 
   return (
