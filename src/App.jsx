@@ -1,9 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from "./ui/pages/Homepage";
-import Search from "./ui/pages/Search";
-import "boxicons";
 import { FiltersProvider } from "./features/Filters/FiltersProvider";
 import { RecipesProvider } from "./features/Recipes/RecipesProvider";
+import Homepage from "./ui/pages/Homepage";
+import Search from "./ui/pages/Search";
+import RecipeInstructions from "./features/Recipes/RecipeInstructions";
+import "boxicons";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,16 @@ const router = createBrowserRouter([
       <FiltersProvider>
         <RecipesProvider>
           <Search />
+        </RecipesProvider>
+      </FiltersProvider>
+    ),
+  },
+  {
+    path: "/recipe-instructions/:recipeId",
+    element: (
+      <FiltersProvider>
+        <RecipesProvider>
+          <RecipeInstructions />
         </RecipesProvider>
       </FiltersProvider>
     ),

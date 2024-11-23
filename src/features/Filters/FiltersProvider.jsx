@@ -229,7 +229,6 @@ function FiltersProvider({ children }) {
     if (newURL !== baseURL) {
       dispatch({ type: "UPDATE_BASE_URL", payload: newURL });
     }
-    console.log("Building URL with offset:", offset);
   }, [apiKey, filters, nutrients, offset]);
 
   // 2.This is where i return my provider

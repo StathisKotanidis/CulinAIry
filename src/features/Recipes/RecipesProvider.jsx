@@ -26,6 +26,22 @@ function RecipesProvider({ children }) {
       } else {
         setRecipes(data.results);
       }
+      // console.log(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getInstructions = async () => {
+    try {
+      setLoading(true);
+      const res = fetch(
+        "https://api.spoonacular.com/recipes/{id}/analyzedInstructions",
+      );
+      if (!res) throw new Error(" Couldn't fetch recipe instructions");
+      const data = (await res).json();
       console.log(data);
     } catch (error) {
       setError(error.message);
