@@ -1,32 +1,34 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useFilters } from "../Filters/FiltersProvider";
+import { useNavigate } from "react-router-dom";
 
 const RecipesContext = createContext();
 
 function RecipesProvider({ children }) {
-  const { baseURL, handleOffset } = useFilters();
+  const { baseURL, handleOffset, apiKey } = useFilters();
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   //a function that hides the filters once i fetch the data
   function handleShowFilters() {
     setShowFilters(() => !showFilters);
   }
 
-  const getRecipes = async function getData(append = false) {
+  const getRecipes = async (append = false) => {
     try {
       setLoading(true);
       const res = await fetch(baseURL);
-      if (!res.ok) throw new Error("Failed fetching the data");
+      if (!res.ok) throw new Error("Failed fetching the recipes");
       const data = await res.json();
       if (append) {
         setRecipes((prevRecipes) => [...prevRecipes, ...data.results]);
       } else {
         setRecipes(data.results);
       }
-      // console.log(data);
+      console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -34,20 +36,23 @@ function RecipesProvider({ children }) {
     }
   };
 
-  const getInstructions = async () => {
+  const getInstructions = async (recipeID) => {
     try {
       setLoading(true);
-      const res = fetch(
-        "https://api.spoonacular.com/recipes/{id}/analyzedInstructions",
+      const res = await fetch(
+        `https://api.spoonacular.com/recipes/${recipeID}}/analyzedInstructions?apiKey=${apiKey}`,
       );
       if (!res) throw new Error(" Couldn't fetch recipe instructions");
-      const data = (await res).json();
+      const data = await res.json();
       console.log(data);
+      navigate(`/recipe-instructions/${recipeID}`);
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
+    console.log(apiKey); // to check if the apiKey is correct and if the function is called
+    console.log(recipeID); // working fine too
   };
 
   useEffect(() => {
@@ -66,6 +71,7 @@ function RecipesProvider({ children }) {
         handleShowFilters,
         showFilters,
         handleOffset,
+        getInstructions,
       }}
     >
       {children}

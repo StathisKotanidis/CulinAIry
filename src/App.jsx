@@ -5,6 +5,7 @@ import Homepage from "./ui/pages/Homepage";
 import Search from "./ui/pages/Search";
 import RecipeInstructions from "./features/Recipes/RecipeInstructions";
 import "boxicons";
+import AskChef from "./features/Chat/AskChef";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/recipe-instructions/:recipeId",
+    path: "/recipe-instructions/:recipeID",
     element: (
       <FiltersProvider>
         <RecipesProvider>
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         </RecipesProvider>
       </FiltersProvider>
     ),
+  },
+  {
+    path: "/chat-with-chef",
+    element: <AskChef />,
   },
 ]);
 

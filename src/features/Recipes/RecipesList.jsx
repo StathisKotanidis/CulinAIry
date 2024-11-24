@@ -1,10 +1,7 @@
-// import { useFilters } from "../Filters/FiltersProvider";
-import { useNavigate } from "react-router-dom";
 import { useRecipes } from "./RecipesProvider";
 
 function RecipesList() {
-  const { recipes } = useRecipes();
-  const navigate = useNavigate();
+  const { recipes, getInstructions } = useRecipes();
 
   return (
     <div className="flex flex-col items-center justify-center gap-4 pt-12">
@@ -23,7 +20,7 @@ function RecipesList() {
           {/* Hover Overlay with Blur */}
           <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black opacity-0 bg-opacity-80 backdrop-blur-md group-hover:opacity-100">
             <button
-              onClick={() => navigate(`/recipe-instructions/${recipe.id}`)}
+              onClick={() => getInstructions(recipe.id)}
               className="px-4 py-2 font-bold border-2 rounded-lg cursor-pointer border-lemonTart bg-eggplant text-eggWhite hover:bg-eggplant"
             >
               See Instructions 👩‍🍳

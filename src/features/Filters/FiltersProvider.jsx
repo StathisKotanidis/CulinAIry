@@ -243,6 +243,7 @@ function FiltersProvider({ children }) {
         baseURL,
         handleClearUrl,
         handleOffset,
+        apiKey,
       }}
     >
       {children}
