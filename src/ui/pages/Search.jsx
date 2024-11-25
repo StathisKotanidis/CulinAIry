@@ -3,7 +3,6 @@ import Recipes from "../../features/Recipes/Recipes";
 import { useRecipes } from "../../features/Recipes/RecipesProvider";
 
 function Search() {
-  // const { showFilters } = useFilters();
   const { showFilters } = useRecipes();
   return (
     <div className="flex flex-col bg-eggplant">

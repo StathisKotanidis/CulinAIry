@@ -7,6 +7,7 @@ import Ingredient from "./Ingredient";
 import Intolerances from "./Intolerances";
 import Nutrients from "./Nutrients";
 import SearchRecipesButton from "./SearchRecipesButton";
+import AskChef from "../Chat/AskChef";
 
 function Filters() {
   const { toggles } = useFilters();
@@ -24,6 +25,7 @@ function Filters() {
           <Intolerances />
         </>
       ) : null}
+      <AskChef />
       <SearchRecipesButton />
     </div>
   );

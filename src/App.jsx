@@ -4,8 +4,8 @@ import { RecipesProvider } from "./features/Recipes/RecipesProvider";
 import Homepage from "./ui/pages/Homepage";
 import Search from "./ui/pages/Search";
 import RecipeInstructions from "./features/Recipes/RecipeInstructions";
+import ChatWithChef from "./ui/pages/ChatWithChef";
 import "boxicons";
-import AskChef from "./features/Chat/AskChef";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/chat-with-chef",
-    element: <AskChef />,
+    element: <ChatWithChef />,
   },
 ]);
 

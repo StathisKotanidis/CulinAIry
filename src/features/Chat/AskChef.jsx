@@ -1,50 +1,19 @@
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-} from "@chatscope/chat-ui-kit-react";
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"; // Import styles
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AskChef() {
-  const [messages, setMessages] = useState([]);
-
-  const handleSend = (message) => {
-    setMessages((prev) => [...prev, { text: message, sender: "user" }]);
-
-    // Simulate a bot response (replace with OpenAI API call)
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        { text: `You said: ${message}`, sender: "bot" },
-      ]);
-    }, 1000);
-  };
-
+  const navigate = useNavigate();
   return (
-    <MainContainer>
-      <ChatContainer>
-        <MessageList>
-          {messages.map((msg, index) => (
-            <Message
-              key={index}
-              model={{
-                message: msg.text,
-                sentTime: "just now",
-                sender: msg.sender,
-                direction: msg.sender === "user" ? "outgoing" : "incoming",
-              }}
-            />
-          ))}
-        </MessageList>
-        <MessageInput
-          placeholder="Type your message..."
-          onSend={(message) => handleSend(message)}
+    <div className="flex flex-col items-center gap-4 text-lg text-center text-eggWhite">
+      <span>OR</span>
+      <span>Ask Chef Crumb</span>
+      <button onClick={() => navigate("/chat-with-chef")}>
+        <img
+          className="w-24 rounded-full"
+          alt="chef-image"
+          src="src/assets/chefCrumb.png"
         />
-      </ChatContainer>
-    </MainContainer>
+      </button>
+    </div>
   );
 }
 

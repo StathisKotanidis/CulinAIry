@@ -30,6 +30,10 @@
   @apply text-lg text-eggWhite;
 }
 
+.main-chat-container-override {
+  @apply !h-full w-1/2 rounded-lg;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -58,6 +62,19 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  height: 100vh;
+}
+
+#root {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100vh;
 }
 
 * {
