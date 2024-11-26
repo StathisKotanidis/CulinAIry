@@ -10,6 +10,7 @@ function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
   const [instructions, setInstructions] = useState([]);
+  const [similarRecipes, setSimilarRecipes] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -37,6 +38,22 @@ function RecipesProvider({ children }) {
     }
   };
 
+  // // a function the fetches simila recipes based on another recipe
+  const getSimilarRecipes = async (recipeID) => {
+    try {
+      const res = await fetch(
+        `https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${apiKey}`,
+      );
+      if (!res) throw new Error("Couldn't fetch similar recipes");
+      const data = await res.json();
+      console.log(data);
+      setSimilarRecipes(data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // a function the fetches the instructions of a recipe based on it's id
   const getInstructions = async (recipeID) => {
     try {
       setLoading(true);
@@ -45,8 +62,9 @@ function RecipesProvider({ children }) {
       );
       if (!res) throw new Error(" Couldn't fetch recipe instructions");
       const data = await res.json();
-      console.log("Instructions inside getInstructions: ", data[0].steps);
+      // console.log("Instructions inside getInstructions: ", data[0].steps);
       setInstructions(data[0].steps);
+      getSimilarRecipes(recipeID);
       navigate(`/recipe-instructions/${recipeID}`);
     } catch (error) {
       console.error("Error fetching recipe instructions:", error.message);
@@ -74,6 +92,8 @@ function RecipesProvider({ children }) {
         handleOffset,
         getInstructions,
         instructions,
+        similarRecipes,
+        getSimilarRecipes,
       }}
     >
       {children}
