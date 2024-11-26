@@ -8,27 +8,30 @@ function RecipesList() {
       {recipes.map((recipe) => (
         <div
           key={recipe.id}
-          className="relative flex flex-col items-center justify-center w-3/4 h-64 overflow-hidden border-4 rounded-lg group border-lemonTart"
+          className="group relative flex h-64 w-3/4 flex-col items-center justify-center overflow-hidden rounded-lg border-4 border-lemonTart"
         >
           {/* Recipe Image */}
           <img
-            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
             src={recipe.image}
             alt="recipe-img"
           />
 
           {/* Hover Overlay with Blur */}
-          <div className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 bg-black opacity-0 bg-opacity-80 backdrop-blur-md group-hover:opacity-100">
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100">
             <button
-              onClick={() => getInstructions(recipe.id)}
-              className="px-4 py-2 font-bold border-2 rounded-lg cursor-pointer border-lemonTart bg-eggplant text-eggWhite hover:bg-eggplant"
+              onClick={() => {
+                console.log("Button clicked for recipe:", recipe.id);
+                getInstructions(recipe.id);
+              }}
+              className="cursor-pointer rounded-lg border-2 border-lemonTart bg-eggplant px-4 py-2 font-bold text-eggWhite hover:bg-eggplant"
             >
               See Instructions 👩‍🍳
             </button>
           </div>
 
           {/* Recipe Title */}
-          <p className="absolute bottom-0 w-full py-2 italic font-bold text-center bg-lemonTart text-eggplant">
+          <p className="absolute bottom-0 w-full bg-lemonTart py-2 text-center font-bold italic text-eggplant">
             {recipe.title}
           </p>
         </div>

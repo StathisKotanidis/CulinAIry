@@ -9,6 +9,7 @@ function RecipesProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
+  const [instructions, setInstructions] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ function RecipesProvider({ children }) {
       } else {
         setRecipes(data.results);
       }
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -40,19 +41,19 @@ function RecipesProvider({ children }) {
     try {
       setLoading(true);
       const res = await fetch(
-        `https://api.spoonacular.com/recipes/${recipeID}}/analyzedInstructions?apiKey=${apiKey}`,
+        `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions?apiKey=${apiKey}`,
       );
       if (!res) throw new Error(" Couldn't fetch recipe instructions");
       const data = await res.json();
-      console.log(data);
+      console.log("Instructions inside getInstructions: ", data[0].steps);
+      setInstructions(data[0].steps);
       navigate(`/recipe-instructions/${recipeID}`);
     } catch (error) {
+      console.error("Error fetching recipe instructions:", error.message);
       setError(error.message);
     } finally {
       setLoading(false);
     }
-    console.log(apiKey); // to check if the apiKey is correct and if the function is called
-    console.log(recipeID); // working fine too
   };
 
   useEffect(() => {
@@ -72,6 +73,7 @@ function RecipesProvider({ children }) {
         showFilters,
         handleOffset,
         getInstructions,
+        instructions,
       }}
     >
       {children}
@@ -81,6 +83,7 @@ function RecipesProvider({ children }) {
 
 function useRecipes() {
   const context = useContext(RecipesContext);
+  // console.log("Current instructions in context:", instructions);
   return context;
 }
 

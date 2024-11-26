@@ -12,7 +12,7 @@ function Recipes() {
   return recipes && recipes?.length > 0 ? (
     <>
       <RecipesList />
-      <div className="flex items-center justify-between w-3/4 m-auto">
+      <div className="m-auto flex w-3/4 items-center justify-between">
         <BackToFilters />
         <ShowMoreRecipes />
       </div>

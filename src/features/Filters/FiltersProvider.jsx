@@ -4,7 +4,7 @@ import { useContext, createContext, useReducer, useEffect } from "react";
 const FiltersContext = createContext();
 
 const initialState = {
-  apiKey: "a239be2908d144789f4a888587b3dc45",
+  apiKey: "48191e372dfb4e96aa47ecdd3f6cd630",
   baseURL: "",
   showFilters: true,
   currentFilter: "",
@@ -258,3 +258,9 @@ function useFilters() {
 }
 
 export { FiltersProvider, useFilters };
+
+//2nd key
+//48191e372dfb4e96aa47ecdd3f6cd630
+
+//main key
+//a239be2908d144789f4a888587b3dc45
