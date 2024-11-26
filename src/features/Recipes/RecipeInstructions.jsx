@@ -1,11 +1,8 @@
-import { useParams } from "react-router-dom";
 import { useRecipes } from "./RecipesProvider";
-import SimilarRecipes from "./SimilarRecipes";
+import Slideshow from "../../ui/Slideshow";
 
 function RecipeInstructions() {
   const { instructions } = useRecipes();
-  // const { recipeID } = useParams();
-  // console.log("Instructions in RecipeInstructions:", instructions);
 
   if (!instructions || instructions.length === 0) {
     return <p>No instructions found for this recipe.</p>;
@@ -16,7 +13,7 @@ function RecipeInstructions() {
   // }
 
   return (
-    <div className="flex flex-col items-center h-full p-4 bg-eggplant text-eggWhite">
+    <div className="flex flex-col items-center h-full min-h-screen p-4 bg-eggplant text-eggWhite">
       <h1 className="pb-4 text-xl font-semibold">Instructions</h1>
       <ul className="flex flex-col gap-2">
         {instructions.map((instruction) => (
@@ -25,7 +22,10 @@ function RecipeInstructions() {
           </li>
         ))}
       </ul>
-      <SimilarRecipes />
+      <h1 className="flex items-center justify-center pt-8 pb-4 text-xl font-semibold text-center">
+        Similar Recipes
+      </h1>
+      <Slideshow />
     </div>
   );
 }
