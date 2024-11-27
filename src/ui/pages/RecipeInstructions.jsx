@@ -1,5 +1,5 @@
-import { useRecipes } from "./RecipesProvider";
-import Slideshow from "../../ui/Slideshow";
+import { useRecipes } from "../../features/Recipes/RecipesProvider";
+import Slideshow from "../Slideshow";
 
 function RecipeInstructions() {
   const { instructions } = useRecipes();
@@ -13,7 +13,7 @@ function RecipeInstructions() {
   // }
 
   return (
-    <div className="flex flex-col items-center h-full min-h-screen p-4 bg-eggplant text-eggWhite">
+    <div className="flex h-full min-h-screen flex-col items-center bg-eggplant p-4 text-eggWhite">
       <h1 className="pb-4 text-xl font-semibold">Instructions</h1>
       <ul className="flex flex-col gap-2">
         {instructions.map((instruction) => (
@@ -22,7 +22,7 @@ function RecipeInstructions() {
           </li>
         ))}
       </ul>
-      <h1 className="flex items-center justify-center pt-8 pb-4 text-xl font-semibold text-center">
+      <h1 className="flex items-center justify-center pb-4 pt-8 text-center text-xl font-semibold">
         Similar Recipes
       </h1>
       <Slideshow />

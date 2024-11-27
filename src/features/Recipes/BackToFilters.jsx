@@ -14,10 +14,10 @@ function BackToFilters() {
   return (
     <button
       onClick={handleRecipes}
-      className="flex items-center justify-center gap-2 pt-8 text-xl text-eggWhite hover:cursor-pointer hover:underline"
+      className="flex items-center justify-center gap-2 pt-8 text-eggWhite hover:cursor-pointer hover:underline"
     >
-      <FaLongArrowAltLeft />
-      <span>Back</span>
+      <FaLongArrowAltLeft className="text-xl sm:text-2xl" />
+      <span className="text-xl sm:text-2xl">Back</span>
     </button>
   );
 }

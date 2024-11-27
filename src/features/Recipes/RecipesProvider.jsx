@@ -14,11 +14,14 @@ function RecipesProvider({ children }) {
   const [similarRecipes, setSimilarRecipes] = useState([]);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [recipesCallCount, setRecipesCallCount] = useState(0);
+  const [similarRecipesCallCount, setSimilarRecipesCallCount] = useState(0);
+  const [instructionsCallCount, setInstructionsCallCount] = useState(0);
 
   //a function that hides the filters once i fetch the data
-  function handleShowFilters() {
+  const handleShowFilters = () => {
     setShowFilters(() => !showFilters);
-  }
+  };
 
   const triggerFetch = () => {
     setShouldFetch(true);
@@ -26,6 +29,8 @@ function RecipesProvider({ children }) {
 
   const getRecipes = async (append = false) => {
     try {
+      setRecipesCallCount((prevCount) => prevCount + 1); // Increment counter
+      console.log(`Recipes API called ${recipesCallCount + 1} times`);
       console.log("Fetching data from: ", baseURL);
       setLoading(true);
       const res = await fetch(baseURL);
@@ -48,6 +53,10 @@ function RecipesProvider({ children }) {
   // // a function the fetches simila recipes based on another recipe
   const getSimilarRecipes = async (recipeID) => {
     try {
+      setSimilarRecipesCallCount((prevCount) => prevCount + 1); // Increment counter
+      console.log(
+        `Similar Recipes API called ${similarRecipesCallCount + 1} times`,
+      );
       const res = await fetch(
         `https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${apiKey}`,
       );
@@ -63,6 +72,8 @@ function RecipesProvider({ children }) {
   // a function the fetches the instructions of a recipe based on it's id
   const getInstructions = async (recipeID) => {
     try {
+      setInstructionsCallCount((prevCount) => prevCount + 1); // Increment counter
+      console.log(`Instructions API called ${instructionsCallCount + 1} times`);
       setLoading(true);
       const res = await fetch(
         `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions?apiKey=${apiKey}`,
