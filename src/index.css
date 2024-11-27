@@ -15,7 +15,7 @@
 }
 
 .checkbox-container {
-  @apply flex gap-2 text-eggWhite;
+  @apply flex gap-2 text-eggWhite sm:text-xl;
 }
 
 .nutrients-container {
@@ -31,7 +31,11 @@
 }
 
 .main-chat-container-override {
-  @apply !h-full w-1/2 rounded-lg;
+  @apply !h-full w-11/12 rounded-lg sm:w-1/2 lg:w-5/12;
+}
+
+.chat-container-override {
+  @apply !h-full;
 }
 
 @keyframes spin {

@@ -6,6 +6,7 @@ const RecipesContext = createContext();
 
 function RecipesProvider({ children }) {
   const { baseURL, handleOffset, apiKey } = useFilters();
+  const [shouldFetch, setShouldFetch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [showFilters, setShowFilters] = useState(true);
@@ -19,12 +20,18 @@ function RecipesProvider({ children }) {
     setShowFilters(() => !showFilters);
   }
 
+  const triggerFetch = () => {
+    setShouldFetch(true);
+  };
+
   const getRecipes = async (append = false) => {
     try {
+      console.log("Fetching data from: ", baseURL);
       setLoading(true);
       const res = await fetch(baseURL);
       if (!res.ok) throw new Error("Failed fetching the recipes");
       const data = await res.json();
+
       if (append) {
         setRecipes((prevRecipes) => [...prevRecipes, ...data.results]);
       } else {
@@ -74,11 +81,26 @@ function RecipesProvider({ children }) {
     }
   };
 
+  //Thank you for ruining my sanity, you wil be remembered
+  // useEffect(() => {
+  //   if (baseURL) {
+  //     getRecipes(true);
+  //   }
+  // }, [baseURL]);
+
+  /* Me: Thank you for changing my life 
+  shouldFetch: I literally just make the fetch only when you click the Search
+   Button and NOT EVERY F*****ING TIME you type a single letter making you
+   run out of API tokens with one call you IDIOT :) 
+   Go create your 5th email now  and grab another Key 
+   so you can continue testing things */
+
   useEffect(() => {
-    if (baseURL) {
-      getRecipes(true); // Automatically fetch when baseURL updates
+    if (shouldFetch) {
+      getRecipes();
+      setShouldFetch(false);
     }
-  }, [baseURL]);
+  }, [shouldFetch]);
 
   return (
     <RecipesContext.Provider
@@ -94,6 +116,7 @@ function RecipesProvider({ children }) {
         instructions,
         similarRecipes,
         getSimilarRecipes,
+        triggerFetch,
       }}
     >
       {children}
@@ -103,7 +126,6 @@ function RecipesProvider({ children }) {
 
 function useRecipes() {
   const context = useContext(RecipesContext);
-  // console.log("Current instructions in context:", instructions);
   return context;
 }
 

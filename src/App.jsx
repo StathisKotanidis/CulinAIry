@@ -34,7 +34,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/chat-with-chef",
-    element: <ChatWithChef />,
+    element: (
+      <FiltersProvider>
+        <RecipesProvider>
+          <ChatWithChef />
+        </RecipesProvider>
+      </FiltersProvider>
+    ),
   },
 ]);
 

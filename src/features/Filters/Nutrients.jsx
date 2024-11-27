@@ -31,7 +31,7 @@ function Nutrients() {
       </button>
       {toggles.nutrients && (
         <div className="flex flex-col gap-4">
-          <span className="pb-4 italic text-center text-eggWhite">
+          <span className="pb-4 text-center italic text-eggWhite">
             ** amount of grams per serving **
           </span>
           <div className="nutrients-container">

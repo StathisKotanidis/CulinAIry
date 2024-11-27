@@ -3,9 +3,9 @@ import { useFilters } from "./FiltersProvider";
 function Ingredient() {
   const { handleFilters } = useFilters();
   return (
-    <div className="flex justify-center items-align">
+    <div className="items-align flex justify-center">
       <input
-        className="px-4 py-2 text-center rounded-full bg-eggWhite text-eggplant placeholder:text-sm placeholder:italic"
+        className="rounded-full bg-eggWhite px-4 py-2 text-eggplant placeholder:text-sm placeholder:font-semibold placeholder:italic sm:w-1/2 sm:px-6 sm:py-4 sm:placeholder:text-lg"
         placeholder="type your main ingredient"
         type="text"
         name="ingredient"

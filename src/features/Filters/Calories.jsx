@@ -27,7 +27,7 @@ function Calories() {
       </button>
       {toggles.calories && (
         <div className="flex flex-col">
-          <div className="flex justify-between">
+          <div className="flex justify-between py-4">
             <label className="text-lg text-eggWhite" htmlFor="calories">
               Max Amount
             </label>

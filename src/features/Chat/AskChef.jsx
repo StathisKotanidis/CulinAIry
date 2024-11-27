@@ -3,15 +3,15 @@ import { useNavigate } from "react-router-dom";
 function AskChef() {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center gap-4 text-center text-lg text-eggWhite">
-      <span>OR</span>
-      <span>Ask Chef Crumb</span>
+    <div className="flex flex-col items-center gap-4 pt-10 text-center text-lg text-eggWhite">
+      <span className="text-2xl font-semibold sm:text-3xl">OR</span>
+      <span className="sm:text-2xl">Ask Chef Crumb</span>
       <button
         className="hover:scale-110"
         onClick={() => navigate("/chat-with-chef")}
       >
         <img
-          className="w-24 rounded-full"
+          className="w-24 rounded-full sm:w-32"
           alt="chef-image"
           src="src/assets/chefCrumb.png"
         />

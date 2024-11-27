@@ -4,7 +4,7 @@ import { useContext, createContext, useReducer, useEffect } from "react";
 const FiltersContext = createContext();
 
 const initialState = {
-  apiKey: "48191e372dfb4e96aa47ecdd3f6cd630",
+  apiKey: import.meta.env.VITE_SPOONACULAR_API_KEY,
   baseURL: "",
   showFilters: true,
   currentFilter: "",

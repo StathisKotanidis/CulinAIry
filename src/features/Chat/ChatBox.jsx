@@ -7,6 +7,7 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { useState } from "react";
+import BackButton from "../../ui/BackButton";
 
 function ChatBox() {
   const [messages, setMessages] = useState([
@@ -83,7 +84,7 @@ function ChatBox() {
   };
 
   return (
-    <div className="flex items-center justify-center h-full p-4 bg-cyan-600">
+    <div className="flex h-full flex-col items-center justify-center bg-eggplant p-4">
       <MainContainer className="main-chat-container-override">
         <ChatContainer>
           <MessageList>
@@ -105,6 +106,7 @@ function ChatBox() {
           />
         </ChatContainer>
       </MainContainer>
+      <BackButton />
     </div>
   );
 }
