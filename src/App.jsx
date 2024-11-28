@@ -5,6 +5,7 @@ import Homepage from "./ui/pages/Homepage";
 import Search from "./ui/pages/Search";
 import RecipeInstructions from "./ui/pages/RecipeInstructions";
 import ChatWithChef from "./ui/pages/ChatWithChef";
+import PageNotFound from "./ui/pages/PageNotFound";
 import "boxicons";
 
 const router = createBrowserRouter([
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       </FiltersProvider>
     ),
   },
+  { path: "*", element: <PageNotFound /> },
 ]);
 
 function App() {
