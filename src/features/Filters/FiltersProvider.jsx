@@ -188,15 +188,11 @@ function FiltersProvider({ children }) {
     dispatch({ type: "CLEAR_URL" });
   }
 
-  //a function that increments offset
-  function handleOffset() {
-    dispatch({ type: "INCREMENT_OFFSET" });
-  }
-
   useEffect(() => {
     // Dynamically build the baseURL based on which filters the user selected
+
     const buildURL = () => {
-      let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=5&offset=${offset}`;
+      let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&number=100`;
       if (filters.ingredient) url += `&query=${filters.ingredient}`;
       if (filters.diet) url += `&diet=${filters.diet}`;
       if (filters.cuisine) url += `&cuisine=${filters.cuisine}`;
@@ -242,7 +238,6 @@ function FiltersProvider({ children }) {
         handleNutrients,
         baseURL,
         handleClearUrl,
-        handleOffset,
         apiKey,
       }}
     >

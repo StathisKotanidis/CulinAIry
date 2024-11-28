@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const RecipesContext = createContext();
 
 function RecipesProvider({ children }) {
-  const { baseURL, apiKey } = useFilters();
+  const { baseURL, offset, handleOffset, apiKey } = useFilters();
   const [shouldFetch, setShouldFetch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [recipes, setRecipes] = useState([]);
@@ -13,87 +13,101 @@ function RecipesProvider({ children }) {
   const [instructions, setInstructions] = useState([]);
   const [similarRecipes, setSimilarRecipes] = useState([]);
   const [error, setError] = useState(null);
-  const [recipesCallCount, setRecipesCallCount] = useState(0);
-  const [visibleRecipes, setVisibleRecipes] = useState(5);
   const navigate = useNavigate();
+  const [recipesCallCount, setRecipesCallCount] = useState(0);
+  const [similarRecipesCallCount, setSimilarRecipesCallCount] = useState(0);
+  const [instructionsCallCount, setInstructionsCallCount] = useState(0);
 
-  // Toggle filter visibility
+  //a function that hides the filters once i fetch the data
   const handleShowFilters = () => {
     setShowFilters(() => !showFilters);
   };
 
-  // Trigger a new fetch operation
   const triggerFetch = () => {
     setShouldFetch(true);
   };
 
-  // Fetch recipes from the API
   const getRecipes = async (append = false) => {
     try {
-      setRecipesCallCount((prevCount) => prevCount + 1);
+      setRecipesCallCount((prevCount) => prevCount + 1); // Increment counter
       console.log(`Recipes API called ${recipesCallCount + 1} times`);
-      console.log("Fetching data from:", baseURL);
+      console.log("Fetching data from: ", baseURL);
       setLoading(true);
       const res = await fetch(baseURL);
       if (!res.ok) throw new Error("Failed fetching the recipes");
       const data = await res.json();
-      console.log(data);
-      setRecipes(data.results);
+
+      if (append) {
+        setRecipes((prevRecipes) => [...prevRecipes, ...data.results]);
+      } else {
+        setRecipes(data.results);
+      }
+      // console.log(data);
     } catch (error) {
-      console.error("Error fetching recipes:", error.message);
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fetch similar recipes based on another recipe
+  // // a function the fetches simila recipes based on another recipe
   const getSimilarRecipes = async (recipeID) => {
     try {
-      console.log("Fetching similar recipes for:", recipeID);
+      setSimilarRecipesCallCount((prevCount) => prevCount + 1); // Increment counter
+      console.log(
+        `Similar Recipes API called ${similarRecipesCallCount + 1} times`,
+      );
       const res = await fetch(
         `https://api.spoonacular.com/recipes/${recipeID}/similar?apiKey=${apiKey}`,
       );
-      if (!res.ok) throw new Error("Couldn't fetch similar recipes");
-
+      if (!res) throw new Error("Couldn't fetch similar recipes");
       const data = await res.json();
+      console.log(data);
       setSimilarRecipes(data);
-      console.log("Similar Recipes:", data);
     } catch (error) {
-      console.error("Error fetching similar recipes:", error.message);
       setError(error.message);
     }
   };
 
-  // Fetch instructions for a specific recipe
+  // a function the fetches the instructions of a recipe based on it's id
   const getInstructions = async (recipeID) => {
     try {
-      console.log("Fetching instructions for recipe:", recipeID);
+      setInstructionsCallCount((prevCount) => prevCount + 1); // Increment counter
+      console.log(`Instructions API called ${instructionsCallCount + 1} times`);
       setLoading(true);
       const res = await fetch(
         `https://api.spoonacular.com/recipes/${recipeID}/analyzedInstructions?apiKey=${apiKey}`,
       );
-      if (!res.ok) throw new Error("Couldn't fetch recipe instructions");
-
+      if (!res) throw new Error(" Couldn't fetch recipe instructions");
       const data = await res.json();
-      setInstructions(data[0]?.steps || []);
-      console.log("Instructions:", data[0]?.steps || []);
-
-      // Fetch similar recipes and navigate
+      // console.log("Instructions inside getInstructions: ", data[0].steps);
+      setInstructions(data[0].steps);
       getSimilarRecipes(recipeID);
       navigate(`/recipe-instructions/${recipeID}`);
     } catch (error) {
-      console.error("Error fetching instructions:", error.message);
+      console.error("Error fetching recipe instructions:", error.message);
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  // Fetch recipes when `shouldFetch` is triggered WORKING
+  //Thank you for ruining my sanity, you wil be remembered
+  // useEffect(() => {
+  //   if (baseURL) {
+  //     getRecipes(true);
+  //   }
+  // }, [baseURL]);
+
+  /* Me: Thank you for changing my life 
+  shouldFetch: I literally just make the fetch only when you click the Search
+   Button and NOT EVERY F*****ING TIME you type a single letter making you
+   run out of API tokens with one call you IDIOT :) 
+   Go create your 5th email now  and grab another Key 
+   so you can continue testing things */
+
   useEffect(() => {
     if (shouldFetch) {
-      console.log("Triggering fetch with current baseURL:", baseURL);
       getRecipes();
       setShouldFetch(false);
     }
@@ -108,6 +122,7 @@ function RecipesProvider({ children }) {
         recipes,
         handleShowFilters,
         showFilters,
+        handleOffset,
         getInstructions,
         instructions,
         similarRecipes,
@@ -122,9 +137,6 @@ function RecipesProvider({ children }) {
 
 function useRecipes() {
   const context = useContext(RecipesContext);
-  if (!context) {
-    throw new Error("useRecipes must be used within a RecipesProvider");
-  }
   return context;
 }
 
