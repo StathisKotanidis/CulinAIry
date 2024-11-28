@@ -3,14 +3,14 @@ import { useRecipes } from "./RecipesProvider";
 import { Loader } from "@chatscope/chat-ui-kit-react";
 
 function RecipesList() {
-  const { recipes } = useRecipes();
-  const [visibleRecipes, setVisibleRecipes] = useState(5); // Initially show 5 recipes
+  const { recipes, getInstructions } = useRecipes();
+  const [visibleRecipes, setVisibleRecipes] = useState(6);
   const loaderRef = useRef(null); // Ref to detect the loader
 
   // Load more recipes when user scrolls near the loader
   const loadMoreRecipes = () => {
     if (visibleRecipes < recipes.length) {
-      setVisibleRecipes((prev) => prev + 5); // Add 5 more recipes
+      setVisibleRecipes((prev) => prev + 6); // Add 5 more recipes
     }
   };
 
@@ -36,12 +36,11 @@ function RecipesList() {
   }, [loaderRef, visibleRecipes]);
 
   return (
-    <div className="flex flex-col items-center justify-center gap-4 pt-12">
-      {/* Render visible recipes only */}
+    <div className="grid w-full grid-cols-1 gap-4 pt-12 lg:grid-cols-2">
       {recipes.slice(0, visibleRecipes).map((recipe, index) => (
         <div
           key={`${recipe.id}-${index}`}
-          className="group relative flex h-64 w-3/4 flex-col items-center justify-center overflow-hidden rounded-lg border-4 border-lemonTart"
+          className="group relative flex flex-col items-center justify-center overflow-hidden rounded-lg border-4 border-lemonTart"
         >
           {/* Recipe Image */}
           <img
@@ -53,9 +52,7 @@ function RecipesList() {
           {/* Hover Overlay with Blur */}
           <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-80 opacity-0 backdrop-blur-md transition-opacity duration-300 group-hover:opacity-100">
             <button
-              onClick={() =>
-                console.log("Button clicked for recipe:", recipe.id)
-              }
+              onClick={() => getInstructions(recipe.id)}
               className="cursor-pointer rounded-lg border-2 border-lemonTart bg-eggplant px-4 py-2 font-bold text-eggWhite hover:bg-eggplant sm:px-6 sm:py-3 sm:text-lg md:px-8 md:py-4 md:text-xl"
             >
               See Instructions 👩‍🍳
@@ -69,7 +66,6 @@ function RecipesList() {
         </div>
       ))}
 
-      {/* Loader */}
       {visibleRecipes < recipes.length && (
         <div ref={loaderRef}>
           <Loader />

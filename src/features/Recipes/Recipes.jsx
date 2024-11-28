@@ -1,6 +1,5 @@
 import Loader from "../../ui/Loader";
 import BackToFilters from "./BackToFilters";
-import ShowMoreRecipes from "./ShowMoreRecipes";
 import RecipesNotFound from "./RecipesNotFound";
 import RecipesList from "./RecipesList";
 import { useRecipes } from "./RecipesProvider";
@@ -14,7 +13,6 @@ function Recipes() {
       <RecipesList />
       <div className="m-auto flex w-3/4 items-center justify-between">
         <BackToFilters />
-        <ShowMoreRecipes />
       </div>
     </>
   ) : (

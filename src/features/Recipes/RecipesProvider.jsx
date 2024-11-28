@@ -14,7 +14,7 @@ function RecipesProvider({ children }) {
   const [similarRecipes, setSimilarRecipes] = useState([]);
   const [error, setError] = useState(null);
   const [recipesCallCount, setRecipesCallCount] = useState(0);
-  const [visibleRecipes, setVisibleRecipes] = useState(5);
+  const [visibleRecipes, setVisibleRecipes] = useState(6);
   const navigate = useNavigate();
 
   // Toggle filter visibility
@@ -78,9 +78,7 @@ function RecipesProvider({ children }) {
       const data = await res.json();
       setInstructions(data[0]?.steps || []);
       console.log("Instructions:", data[0]?.steps || []);
-
-      // Fetch similar recipes and navigate
-      getSimilarRecipes(recipeID);
+      // getSimilarRecipes(recipeID);
       navigate(`/recipe-instructions/${recipeID}`);
     } catch (error) {
       console.error("Error fetching instructions:", error.message);
@@ -113,6 +111,7 @@ function RecipesProvider({ children }) {
         similarRecipes,
         getSimilarRecipes,
         triggerFetch,
+        visibleRecipes,
       }}
     >
       {children}
