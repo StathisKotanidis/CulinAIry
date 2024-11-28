@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useRecipes } from "../../features/Recipes/RecipesProvider";
 import Filters from "../../features/Filters/Filters";
 import Recipes from "../../features/Recipes/Recipes";
-import { useRecipes } from "../../features/Recipes/RecipesProvider";
 
 function Search() {
   const { showFilters } = useRecipes();

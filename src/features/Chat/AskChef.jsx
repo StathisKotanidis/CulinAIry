@@ -5,13 +5,13 @@ function AskChef() {
   return (
     <div className="flex flex-col items-center gap-4 pt-10 text-center text-lg text-eggWhite">
       <span className="text-2xl font-semibold sm:text-3xl">OR</span>
-      <span className="sm:text-2xl">Ask Chef Crumb</span>
+      <span className="pb-6 sm:text-2xl md:text-3xl">Ask Chef Crumb</span>
       <button
         className="hover:scale-110"
         onClick={() => navigate("/chat-with-chef")}
       >
         <img
-          className="w-24 rounded-full sm:w-32"
+          className="w-24 rounded-full sm:w-32 md:w-36 lg:w-28"
           alt="chef-image"
           src="src/assets/chefCrumb.png"
         />

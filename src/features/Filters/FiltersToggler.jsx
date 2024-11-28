@@ -6,7 +6,7 @@ function FiltersToggler() {
   return (
     <button
       onClick={() => handleToggles("filters")}
-      className="flex w-full items-center justify-center gap-2 pb-3 pt-8 text-lg text-eggWhite transition duration-300 ease-in-out hover:scale-110 hover:cursor-pointer sm:text-2xl"
+      className="flex w-full items-center justify-center gap-2 pt-8 text-lg text-eggWhite transition duration-300 ease-in-out hover:scale-110 hover:cursor-pointer sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl"
     >
       <FaFilter />
       <span>Filters</span>
