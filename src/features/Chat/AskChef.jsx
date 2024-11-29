@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import chefCrumb from "../../ui/images/chefCrumb.png";
 
 function AskChef() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ function AskChef() {
         <img
           className="w-24 rounded-full sm:w-32 md:w-36 lg:w-28"
           alt="chef-image"
-          src="src/assets/chefCrumb.png"
+          src={chefCrumb}
         />
       </button>
     </div>

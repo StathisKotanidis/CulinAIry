@@ -1,4 +1,5 @@
 import { useRecipes } from "../../features/Recipes/RecipesProvider";
+import BackButton from "../BackButton";
 import Slideshow from "../Slideshow";
 
 function RecipeInstructions() {
@@ -27,6 +28,7 @@ function RecipeInstructions() {
         Similar Recipes
       </h1>
       <Slideshow />
+      <BackButton />
     </div>
   );
 }
