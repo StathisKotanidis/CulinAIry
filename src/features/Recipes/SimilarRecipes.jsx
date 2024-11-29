@@ -5,7 +5,7 @@ function SimilarRecipes() {
 
   if (!similarRecipes) console.log("There similaRecipes is not valid");
   return (
-    <div className="flex flex-col gap-4 pt-6">
+    <div className="flex flex-col gap-8 pt-6">
       <h1>Similar Recipes</h1>
       <div className="flex flex-col items-center justify-center gap-4 pt-12">
         {similarRecipes.map((recipe) => (

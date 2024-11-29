@@ -79,7 +79,7 @@ function RecipesProvider({ children }) {
       const data = await res.json();
       setInstructions(data[0]?.steps || []);
       console.log("Instructions:", data[0]?.steps || []);
-      // getSimilarRecipes(recipeID);
+      getSimilarRecipes(recipeID);
       navigate(`/recipe-instructions/${recipeID}`);
     } catch (error) {
       console.error("Error fetching instructions:", error.message);

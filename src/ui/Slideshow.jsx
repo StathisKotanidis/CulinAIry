@@ -22,17 +22,25 @@ function Slideshow() {
   };
 
   return (
-    <div className="relative w-full max-w-lg mx-auto overflow-hidden rounded-lg group">
+    <div
+      className="relative w-full mx-auto overflow-hidden rounded-lg group lg:w-3/4"
+      style={{
+        height: "400px", // Set a fixed height for the slideshow container
+      }}
+    >
       <div
         className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        style={{
+          transform: `translateX(-${currentSlide * 100}%)`,
+        }}
       >
         {similarRecipes.map((recipe, index) => (
           <div
             key={recipe.id}
-            className="flex-shrink-0 w-full h-64 bg-center bg-cover"
+            className="flex-shrink-0 w-full bg-center bg-cover"
             style={{
               backgroundImage: `url(https://spoonacular.com/recipeImages/${recipe.id}-312x231.${recipe.imageType})`,
+              height: "400px", // Match the parent height to ensure proper scaling
             }}
           >
             <button
@@ -65,7 +73,9 @@ function Slideshow() {
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`h-3 w-3 rounded-full ${currentSlide === index ? "bg-white" : "bg-gray-400"} transition-all`}
+            className={`h-3 w-3 rounded-full ${
+              currentSlide === index ? "bg-white" : "bg-gray-400"
+            } transition-all`}
           ></button>
         ))}
       </div>
