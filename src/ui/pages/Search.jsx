@@ -40,7 +40,6 @@ function Search() {
           </div>
         </>
       ) : (
-        // Maintain toggle behavior for small screens
         <div className="p-2">{showFilters ? <Filters /> : <Recipes />}</div>
       )}
     </div>

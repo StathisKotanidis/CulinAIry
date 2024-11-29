@@ -6,11 +6,10 @@ import { useRecipes } from "./RecipesProvider";
 import { useEffect, useState } from "react";
 
 function Recipes() {
-  const { recipes, loading } = useRecipes();
+  const { recipes, loading, hasSearched } = useRecipes();
   if (loading) return <Loader />;
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1024);
 
-  // Update the `isSmallScreen` state on window resize
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 1024);
@@ -18,14 +17,21 @@ function Recipes() {
 
     window.addEventListener("resize", handleResize);
 
-    // Cleanup the event listener
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  if (!hasSearched && !isSmallScreen) {
+    return (
+      <div className="pt-56 italic text-center justify-centertext-lg text-eggWhite xl:text-3xl 2xl:text-4xl">
+        Let's get some recipes! 🥧
+      </div>
+    );
+  }
 
   return recipes && recipes?.length > 0 ? (
     <>
       <RecipesList />
-      <div className="m-auto flex w-3/4 items-center justify-between">
+      <div className="flex items-center justify-between w-3/4 m-auto">
         {isSmallScreen && <BackToFilters />}
       </div>
     </>

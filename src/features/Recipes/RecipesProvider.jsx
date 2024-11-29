@@ -15,6 +15,7 @@ function RecipesProvider({ children }) {
   const [error, setError] = useState(null);
   const [recipesCallCount, setRecipesCallCount] = useState(0);
   const [visibleRecipes, setVisibleRecipes] = useState(6);
+  const [hasSearched, setHasSearched] = useState(false);
   const navigate = useNavigate();
 
   // Toggle filter visibility
@@ -28,7 +29,7 @@ function RecipesProvider({ children }) {
   };
 
   // Fetch recipes from the API
-  const getRecipes = async (append = false) => {
+  const getRecipes = async () => {
     try {
       setRecipesCallCount((prevCount) => prevCount + 1);
       console.log(`Recipes API called ${recipesCallCount + 1} times`);
@@ -112,6 +113,9 @@ function RecipesProvider({ children }) {
         getSimilarRecipes,
         triggerFetch,
         visibleRecipes,
+        setRecipes,
+        hasSearched,
+        setHasSearched,
       }}
     >
       {children}

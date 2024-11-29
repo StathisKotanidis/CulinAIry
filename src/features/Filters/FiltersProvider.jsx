@@ -1,4 +1,10 @@
-import { useContext, createContext, useReducer, useEffect } from "react";
+import {
+  useContext,
+  createContext,
+  useRef,
+  useReducer,
+  useEffect,
+} from "react";
 
 //1. Created  a custom context
 const FiltersContext = createContext();
@@ -154,6 +160,7 @@ function reducer(state, action) {
 function FiltersProvider({ children }) {
   const [{ apiKey, baseURL, toggles, offset, filters, nutrients }, dispatch] =
     useReducer(reducer, initialState);
+  const inputRef = useRef();
 
   // a function that handles the toggle functionality of each filter
   function handleToggles(filterName) {
@@ -239,6 +246,7 @@ function FiltersProvider({ children }) {
         baseURL,
         handleClearUrl,
         apiKey,
+        inputRef,
       }}
     >
       {children}
