@@ -1,6 +1,17 @@
 # culinAIry
 
-culinAIry is a personalized recipe application that caters to your culinary preferences and dietary needs. From exploring a vast array of recipes to engaging with Chef Crumb, your AI-powered assistant, culinAIry elevates your cooking experience. Easily search recipes by ingredients, cuisines, or dietary requirements, and discover similar recipes or detailed step-by-step instructions for your favorite dishes.
+culinAIry is an innovative recipe application designed to make
+            cooking enjoyable, personalized, and interactive. Users can discover
+            recipes tailored to their preferences by searching for ingredients,
+            cuisines, dietary restrictions, or nutritional goals. With
+            culinAIry, you can chat with Chef Crumb, an AI-powered assistant, to
+            get personalized recipe suggestions, cooking tips, and answers to
+            your culinary questions. The app also allows users to explore
+            detailed recipe instructions and find similar recipes for endless
+            inspiration. Featuring dynamic filters, visually appealing
+            animations, and interactive UI elements, culinAIry offers a seamless
+            and immersive browsing experience. Whether you're a seasoned chef or
+            a kitchen novice, culinAIry inspires culinary creativity for all!
 
 [**Link to Project**](#)
 
