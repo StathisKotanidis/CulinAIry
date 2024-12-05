@@ -13,7 +13,7 @@ culinAIry is an innovative recipe application designed to make
             and immersive browsing experience. Whether you're a seasoned chef or
             a kitchen novice, culinAIry inspires culinary creativity for all!
 
-[**Link to Project**](#)
+[**Link to Project**](https://culinairy-recipe-app.netlify.app/)
 
 ---
 
