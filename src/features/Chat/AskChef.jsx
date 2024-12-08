@@ -4,7 +4,7 @@ import chefCrumb from "../../ui/images/chefCrumb.png";
 function AskChef() {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-center gap-4 pt-10 text-lg text-center text-eggWhite">
+    <div className="flex flex-col items-center gap-4 pt-10 text-center text-lg text-eggWhite">
       <span className="text-2xl font-semibold sm:text-3xl">OR</span>
       <span className="pb-6 sm:text-2xl md:text-3xl">Ask Chef Crumb</span>
       <button
